@@ -179,11 +179,9 @@ button {
   display: flex;
 }
 
-
 .ohr-h-center {
   display: flex;
   justify-content: center;
-  height: 100%;
 }
 
 .ohr-auto-height {

@@ -1,11 +1,28 @@
 <template>
   <div id="navbar">
+    <div  :class="isDrawerVisible ? 'ohr-mobile-drawer' : 'ohr-mobile-drawer-hidden'">
+      <div>
+        <img @click="handleToggleDrawer" alt="cross-icon" style="cursor: pointer" src="@/assets/icons/cross.svg" />
+      </div>
+      <div class="ohr-user ohr-row ohr-v-center ohr-h-center">
+        <img src="@/assets/logo.svg" />
+        <p>Noble Jang</p>
+      </div>
+      <div class="ohr-navbar-menu-list">
+        <p>New Cooperative</p>
+        <div class="ohr-menu-divider" />
+        <p>Settings</p>
+        <div class="ohr-menu-divider" />
+        <p>Wallet</p>
+      </div>
+    </div>
     <div class="ohr-mobile-navbar">
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-8 ohr-v-center ohr-no-gutter ">
           <div class="ohr-row ohr-v-center ohr-h-100 ohr-left ohr-no-gutter">
             <img alt="logo" class="ohr-logo" src="@/assets/logo.svg" />
             <img
+              @click="handleToggleDrawer"
               alt="menu"
               class="ohr-hamburger"
               src="@/assets/icons/ham-burger.svg"
@@ -81,7 +98,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isDrawerVisible: false,
+    };
+  },
+
+  methods: {
+    handleToggleDrawer() {
+      this.isDrawerVisible = !this.isDrawerVisible;
+    },
+  },
+};
 </script>
 
 <style lang="sass" scoped>
@@ -91,6 +120,47 @@ export default {};
     top: 0
     background-color: #ffffff
     width: 100%
+
+.ohr-mobile-drawer
+    position: fixed
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background-color: #ffffff
+    padding: 61px 51px
+    z-index: 10
+    transition: .4s
+    .ohr-user
+        margin-top: 8px
+        margin-bottom: 100px
+        p
+            margin-left: 12px
+            color: #707070
+            font-size: 13px
+            font-weight: 500
+    .ohr-navbar-menu-list
+        text-align: center
+        .ohr-menu-divider
+            background-color: #D8D8D8
+            height: 1px
+            width: 100%
+            margin-bottom: 35.5px
+        p
+            color: #707070
+            font-size: 21px !important
+            font-weight: bold !important
+            margin-bottom: 35.5px
+
+.ohr-mobile-drawer-hidden
+    left: -100%
+    visibility: hidden
+    position: fixed
+    border-radius: 50%
+    height: 100%
+    width: 100%
+    opacity: .1
+    transition: .4s
 
 .ohr-mobile-navbar
     height: 125px
@@ -149,6 +219,6 @@ export default {};
 @media only screen and (max-width: 576px)
     .ohr-mobile-navbar
         display: block !important
-    .ohr-desktop-navbar 
+    .ohr-desktop-navbar
         display: none !important
 </style>
