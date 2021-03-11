@@ -39,11 +39,12 @@ export default {
     border-radius: 28px
     height: 284px
     margin: 0 30px
-    width: 318px
+    width: 100%
     background-color: #252E65
+    cursor: pointer
     img
         max-width: 100%
-        width: 318px
+        width: 100%
         object-fit: cover
         height: 169px
         border-top-left-radius: 24px
@@ -75,6 +76,7 @@ export default {
             color: #252E65
             height: 26px
             margin-top: 8px
+            cursor: pointer
         .members-log
             display: flex
             justify-content: flex-end
@@ -94,4 +96,7 @@ export default {
     .ohr-card
         margin: 0 20px !important
         height: 310px !important
+@media only screen and (max-width: 1050px)
+    .ohr-card
+        margin: 0 !important
 </style>

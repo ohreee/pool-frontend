@@ -1,21 +1,18 @@
 <template>
   <div class="ohr-card">
-      <img src="@/assets/icons/plus.svg" alt="plus"/>
-      <p>Create</p>
+    <img src="@/assets/icons/plus.svg" alt="plus" />
+    <p>Create</p>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="sass" scoped>
     .ohr-card
         border-radius: 28px
         height: 284px
-        width: 318px
         background-color: #FFC043
         margin-right: 40px
         display: flex
@@ -23,6 +20,7 @@ export default {
         justify-content: center
         align-items: center
         cursor: pointer
+        width: 100%
         p
             font-size: 33px
             font-weight: bold
@@ -32,4 +30,8 @@ export default {
     .ohr-card
         margin: 0 30px 0 0 !important
         height: 310px !important
+
+@media only screen and (max-width: 1050px)
+    .ohr-card
+        margin: 0 !important
 </style>

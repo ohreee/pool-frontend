@@ -3,28 +3,36 @@
     <div class="ohr-container-home">
       <h1>Cooperatives</h1>
       <div class="ohr-home-desktop-list">
-        <newcard />
-        <card
-          title="Uhuru Community
+        <div class="ohr-card-container">
+          <newcard />
+        </div>
+        <div class="ohr-card-container">
+          <card
+            title="Uhuru Community
                   Project"
-          :joined="true"
-          :membersCount="25"
-          image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
-        />
-        <card
-          title="Samira, Saidu
+            :joined="true"
+            :membersCount="25"
+            image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
+          />
+        </div>
+        <div class="ohr-card-container">
+          <card
+            title="Samira, Saidu
             and Friends"
-          :joined="false"
-          :membersCount="100"
-          image="https://cdn.discordapp.com/attachments/818922919715536909/819624768385843220/img2.png"
-        />
-        <card
-          title="Samira, Saidu
+            :joined="false"
+            :membersCount="100"
+            image="https://cdn.discordapp.com/attachments/818922919715536909/819624768385843220/img2.png"
+          />
+        </div>
+        <div class="ohr-card-container">
+          <card
+            title="Samira, Saidu
                 and Friends "
-          :joined="true"
-          :membersCount="90"
-          image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
-        />
+            :joined="true"
+            :membersCount="90"
+            image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -57,5 +65,19 @@ h1
   .ohr-home-desktop-list
     display: flex
     justify-content: flex-start
-    flex-wrap: nowrap
+    flex-wrap: wrap
+  .ohr-card-container
+    flex: 25%
+    max-width: 25%
+    padding: 16px
+
+@media only screen and (max-width: 1050px)
+  .ohr-card-container
+    flex: 50% !important
+    max-width: 50% !important
+
+@media only screen and (max-width: 576px)
+  .ohr-card-container
+    flex: 100% !important
+    max-width: 100% !important
 </style>
