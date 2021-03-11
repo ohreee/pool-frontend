@@ -28,4 +28,8 @@ export default {
             font-weight: bold
             color: #fff
             margin-top: 26px
+@media only screen and (max-width: 1550px)
+    .ohr-card
+        margin: 0 30px 0 0 !important
+        height: 310px !important
 </style>

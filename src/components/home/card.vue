@@ -89,4 +89,9 @@ export default {
             color: #FFC043
             font-size: 45px
             font-family: 'Lato' !important
+
+@media only screen and (max-width: 1550px)
+    .ohr-card
+        margin: 0 20px !important
+        height: 310px !important
 </style>
