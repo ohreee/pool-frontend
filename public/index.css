@@ -71,6 +71,8 @@ button {
   width: 100%;
   height: 100%;
   padding-top: 125px;
+  max-width: 1560px;
+  margin: auto;
 }
 
 .ohr-success-button {
