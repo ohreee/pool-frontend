@@ -58,7 +58,7 @@ h1
 .ohr-container-home
   max-width: 1560px
   margin: auto
-  padding: 70px 24px
+  padding: 60px 24px
   display: flex
   flex-direction: column
   justify-content: flex-start
