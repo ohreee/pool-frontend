@@ -156,7 +156,6 @@ export default {
     left: -100%
     visibility: hidden
     position: fixed
-    border-radius: 50%
     height: 100%
     width: 100%
     opacity: .1

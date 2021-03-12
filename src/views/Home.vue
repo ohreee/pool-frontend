@@ -34,6 +34,7 @@
           />
         </div>
       </div>
+      <button class="ohr-home-view-more">View More</button>
     </div>
   </div>
 </template>
@@ -71,11 +72,25 @@ h1
     max-width: 25%
     padding: 16px
 
+  .ohr-home-view-more
+    background-color: #707070
+    font-size: 30px
+    font-weight: bold
+    color: #fff
+    width: 180px
+    margin: 92px auto
+    margin-bottom: 0px
+    height: 57px
+    border-radius: 5px
+    border: none
+    outline: none
+    cursor: pointer
+
 @media only screen and (max-width: 1050px)
   .ohr-card-container
     flex: 50% !important
     max-width: 50% !important
-    padding: 16px 0px !important
+    padding: 16px 16px !important
 
 @media only screen and (max-width: 576px)
   .ohr-card-container
