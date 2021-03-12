@@ -75,9 +75,11 @@ h1
   .ohr-card-container
     flex: 50% !important
     max-width: 50% !important
+    padding: 16px 0px !important
 
 @media only screen and (max-width: 576px)
   .ohr-card-container
     flex: 100% !important
     max-width: 100% !important
+    padding: 16px 0px !important
 </style>
