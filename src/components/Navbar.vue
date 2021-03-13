@@ -57,7 +57,10 @@
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-8 ohr-v-center ohr-no-gutter ">
           <div class="ohr-row ohr-v-center ohr-h-100 ohr-left ohr-no-gutter">
+        <router-link to="/home">
+           
             <img alt="logo" class="ohr-logo" src="@/assets/logo.svg" />
+        </router-link>
             <img
               @click="handleToggleDrawer"
               alt="menu"
@@ -95,11 +98,14 @@
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-8 ohr-v-center ohr-no-gutter ">
           <div class="ohr-row ohr-v-center ohr-h-100 ohr-left ohr-no-gutter">
+        <router-link to="/home">
+            
             <img
               alt="logo"
               class="ohr-logo-desktop"
               src="@/assets/logo-desktop.svg"
             />
+        </router-link>
           </div>
         </div>
         <div class="ohr-col-4 ohr-v-center ohr-right ohr-no-gutter">
