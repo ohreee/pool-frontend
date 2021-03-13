@@ -201,6 +201,7 @@ export default {
   width: 498px
   transition: .7s
   background-color: #ffffff
+  visibility: hidden
 
   .ohr-user
     margin-top: 8px

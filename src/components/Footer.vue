@@ -106,7 +106,6 @@ export default {};
     display: block !important
     width: 130px
     padding: 8px
-    margin-bottom: 16px 
   .ohr-footer-desktop, .ohr-footer-wrapper
     height: 80px !important
     padding-bottom: 8px
@@ -114,7 +113,7 @@ export default {};
   .ohr-copyright
     flex: 100% !important
     max-width: 100% !important
-    justify-content: flex-start
+    justify-content: center
     font-size: 14px !important
     color: #707070 !important
     order: 3 !important
@@ -143,6 +142,12 @@ export default {};
     margin: 14px 0 !important
     color: #707070 !important
     font-size: 14px !important
+    text-align: center
+    display: flex !important
+    align-items: center
+    justify-content: center
+    img
+      margin-left: 8px
 
 @media only screen and (max-width: 450px)
   .ohr-footer-desktop, .ohr-footer-wrapper
@@ -152,13 +157,13 @@ export default {};
   .ohr-social-links
     flex: 100% !important
     max-width: 100% !important
-    justify-content: flex-start !important
+    justify-content: center !important
     order: 2 !important
 
 @media only screen and (max-width: 358px)
     .ohr-social-links
       img
-        height: 20px
-        width: 20px
+        height: 24px
+        width: 24px
         margin: 8px !important
 </style>
