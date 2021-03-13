@@ -63,4 +63,5 @@ h1
   h1
     font-size: 21px !important
     text-align: center
+    margin-bottom: 41px !important
 </style>
