@@ -22,4 +22,6 @@ export default {
     border: none
     outline: none
     cursor: pointer
+    font-weight: bold
+    font-size: 21px
 </style>
