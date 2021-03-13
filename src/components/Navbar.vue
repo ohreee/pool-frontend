@@ -1,8 +1,44 @@
 <template>
   <div id="navbar">
-    <div  :class="isDrawerVisible ? 'ohr-mobile-drawer' : 'ohr-mobile-drawer-hidden'">
+    <div
+      :class="
+        isDrawerVisible ? 'ohr-mobile-drawer' : 'ohr-mobile-drawer-hidden'
+      "
+    >
       <div>
-        <img @click="handleToggleDrawer" alt="cross-icon" style="cursor: pointer" src="@/assets/icons/cross.svg" />
+        <img
+          @click="handleToggleDrawer"
+          alt="cross-icon"
+          style="cursor: pointer"
+          src="@/assets/icons/cross.svg"
+        />
+      </div>
+      <div class="ohr-user ohr-row ohr-v-center ohr-h-center">
+        <img src="@/assets/logo.svg" />
+        <p>Noble Jang</p>
+      </div>
+      <div class="ohr-navbar-menu-list">
+        <p>New Cooperative</p>
+        <div class="ohr-menu-divider" />
+        <p>Settings</p>
+        <div class="ohr-menu-divider" />
+        <p>Wallet</p>
+      </div>
+    </div>
+    <div
+      :class="
+        isDesktopDrawerVisible
+          ? 'ohr-desktop-drawer'
+          : 'ohr-desktop-drawer-hidden'
+      "
+    >
+      <div>
+        <img
+          @click="handleDesktopToggleDrawer"
+          alt="cross-icon"
+          style="cursor: pointer"
+          src="@/assets/icons/cross.svg"
+        />
       </div>
       <div class="ohr-user ohr-row ohr-v-center ohr-h-center">
         <img src="@/assets/logo.svg" />
@@ -87,6 +123,8 @@
             </div>
           </div>
           <img
+          @click="handleDesktopToggleDrawer"
+
             alt="menu"
             class="ohr-hamburger"
             src="@/assets/icons/ham-burger.svg"
@@ -102,12 +140,16 @@ export default {
   data() {
     return {
       isDrawerVisible: false,
+      isDesktopDrawerVisible: false,
     };
   },
 
   methods: {
     handleToggleDrawer() {
       this.isDrawerVisible = !this.isDrawerVisible;
+    },
+    handleDesktopToggleDrawer() {
+      this.isDesktopDrawerVisible = !this.isDesktopDrawerVisible;
     },
   },
 };
@@ -120,6 +162,66 @@ export default {
     top: 0
     background-color: #ffffff
     width: 100%
+
+.ohr-desktop-drawer
+  position: fixed
+  right: 0
+  top: 100px
+  max-width: 498px
+  width: 498px
+  background-color: #ffffff
+  height: 100%
+  padding: 61px 70px
+  transition: .3s
+  .ohr-user
+    margin-top: 8px
+    margin-bottom: 100px
+    p
+        margin-left: 12px
+        color: #707070
+        font-size: 13px
+        font-weight: 500
+  .ohr-navbar-menu-list
+    text-align: right
+    .ohr-menu-divider
+        background-color: #D8D8D8
+        height: 1px
+        width: 100%
+        margin-bottom: 35.5px
+    p
+        color: #707070
+        font-size: 21px !important
+        font-weight: bold !important
+        margin-bottom: 35.5px
+
+.ohr-desktop-drawer-hidden
+  right: -100%
+  position: fixed
+  height: 100%
+  width: 498px
+  transition: .7s
+  background-color: #ffffff
+
+  .ohr-user
+    margin-top: 8px
+    margin-bottom: 100px
+    p
+      margin-left: 12px
+      color: #707070
+      font-size: 13px
+      font-weight: 500
+  .ohr-navbar-menu-list
+    text-align: right
+    .ohr-menu-divider
+      background-color: #D8D8D8
+      height: 1px
+      width: 100%
+      margin-bottom: 35.5px
+    p
+      color: #707070
+      font-size: 21px !important
+      font-weight: bold !important
+      margin-bottom: 35.5px
 
 .ohr-mobile-drawer
     position: fixed
