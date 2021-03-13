@@ -32,5 +32,5 @@ export default {
             padding: 8px
     @media only screen and (max-width: 992px)
         p
-            font-size: 10px !important
+            font-size: 13px !important
 </style>
