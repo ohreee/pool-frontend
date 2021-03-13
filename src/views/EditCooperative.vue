@@ -87,6 +87,8 @@ h1
     margin-bottom: 41px !important
   .dissolve-container
     justify-content: flex-start !important
+  .dissolve-cop
+    font-size: 13px !important
 
 @media only screen and (max-width: 576px)
   .ohr-button
