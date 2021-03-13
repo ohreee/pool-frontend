@@ -34,9 +34,10 @@ div {
 
 
 a {
-  cursor: poMaven Pro;
+  cursor: pointer;
+  color: #707070;
+
   text-decoration: none;
-  color: #fff;
 }
 
 /* *::-webkit-scrollbar-track {

@@ -1,12 +1,18 @@
 <template>
-  <div class="ohr-card">
+  <div @click="openCreateCooperative" class="ohr-card">
     <img src="@/assets/icons/plus.svg" alt="plus" />
     <p>Create</p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openCreateCooperative(){
+      this.$router.push('/create-cooperative')
+    }
+  }
+};
 </script>
 
 <style lang="sass" scoped>

@@ -18,7 +18,8 @@
         <p>Noble Jang</p>
       </div>
       <div class="ohr-navbar-menu-list">
-        <p>New Cooperative</p>
+        <p @click="handleToggleDrawer">
+          <router-link to="/create-cooperative"> Cooperative </router-link></p>
         <div class="ohr-menu-divider" />
         <p>Settings</p>
         <div class="ohr-menu-divider" />
@@ -183,6 +184,7 @@ export default {
         font-weight: 500
   .ohr-navbar-menu-list
     text-align: right
+    cursor: pointer
     .ohr-menu-divider
         background-color: #D8D8D8
         height: 1px
@@ -244,6 +246,7 @@ export default {
             font-weight: 500
     .ohr-navbar-menu-list
         text-align: center
+        cursor: pointer
         .ohr-menu-divider
             background-color: #D8D8D8
             height: 1px

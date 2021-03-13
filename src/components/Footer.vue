@@ -1,7 +1,11 @@
 <template>
   <div class="ohr-footer-wrapper">
     <div class="ohr-footer-desktop">
-      <img alt="logo" class="ohr-footer-desktop-logo" src="@/assets/logo-desktop.svg"/>
+      <img
+        alt="logo"
+        class="ohr-footer-desktop-logo"
+        src="@/assets/logo-desktop.svg"
+      />
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-2 ohr-v-center ohr-row ohr-copyright">
           © 2021 Ohreee Ltd.
@@ -59,6 +63,11 @@ export default {};
         color: #252E65
         margin: 0 32px
         cursor: pointer
+        display: flex !important
+        align-items: center
+        justify-content: center
+        img
+          margin-left: 8px
     .ohr-social-links
         img
             margin: 0 12px
@@ -79,7 +88,9 @@ export default {};
         max-width: 100% !important
         justify-content: center !important
 
-
+@media only screen and (max-width: 900px)
+  li
+    font-size: 16px !important
 @media only screen and (max-width: 786px)
   .ohr-footer-desktop, .ohr-footer-wrapper
     height: 80px !important
