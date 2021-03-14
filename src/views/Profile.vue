@@ -13,6 +13,30 @@
           </p>
         </div>
       </div>
+      <div class="profile-mobile-toggle">
+        <div class="profile-mobile-toggler-container">
+          <div
+            @click="toggleView"
+            :class="
+              isDetailsSelected
+                ? 'profile-mobile-details-active'
+                : 'profile-mobile-details'
+            "
+          >
+            Details
+          </div>
+          <div
+            @click="toggleView"
+            :class="
+              !isDetailsSelected
+                ? 'profile-mobile-privacy-active'
+                : 'profile-mobile-privacy'
+            "
+          >
+            Privacy
+          </div>
+        </div>
+      </div>
       <div class="ohr-row">
         <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
           <div class="ohr-profile-heading">
@@ -57,27 +81,29 @@
         <div class="ohr-col-1 ohr-h-center ohr-profile-divider-container">
           <div class="ohr-profile-divider"></div>
         </div>
-        <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
+        <div
+          class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12 profile-desktop-privacy"
+        >
           <div class="ohr-profile-heading">
             <p>Privacy</p>
             <div></div>
           </div>
           <div class="ohr-row ohr-no-gutter">
-              <div class="ohr-col-12 ohr-no-gutter">
-                <div class="ohr-privacy-element">
-                  <h5>Account 2FA Protection</h5>
-                  <div>
-                      <ohr-toggle :checked="true"/>
-                  </div>
+            <div class="ohr-col-12 ohr-no-gutter">
+              <div class="ohr-privacy-element">
+                <h5>Account 2FA Protection</h5>
+                <div>
+                  <ohr-toggle :checked="true" />
                 </div>
-                <div class="ohr-privacy-element">
-                  <h5>Upload ID Card</h5>
-                  <div>
-                      <p><u>Uploaded</u></p>
-                  </div>
+              </div>
+              <div class="ohr-privacy-element">
+                <h5>Upload ID Card</h5>
+                <div>
+                  <p><u>Uploaded</u></p>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,9 +111,20 @@
 </template>
 
 <script>
-import OhrToggle from '../components/common/OhrToggle.vue';
+import OhrToggle from "../components/common/OhrToggle.vue";
 export default {
-  components: { OhrToggle },};
+  components: { OhrToggle },
+  data() {
+    return {
+      isDetailsSelected: true,
+    };
+  },
+  methods: {
+      toggleView(){
+          this.isDetailsSelected = !this.isDetailsSelected
+      }
+  }
+};
 </script>
 
 <style lang="sass" scoped>
@@ -149,7 +186,50 @@ export default {
         p
             color: #252E65
             font-size: 12px
+
+.profile-mobile-toggle
+    width: 100%
+    margin-bottom: 32px
+    display: none
+.profile-mobile-toggler-container
+    display: flex
+    background-color: #FFFFFF
+    height: 43px
+    width: 178px
+    margin: 0 auto
+    border-radius: 15px
+    align-items: center
+    justify-content: space-evenly
+    .profile-mobile-details, .profile-mobile-privacy
+        color: #032C60
+        cursor: pointer
+        font-size: 15px
+    .profile-mobile-details-active, .profile-mobile-privacy-active
+        background-color: #F3F3F3
+        border-radius: 10px
+        height: 31px
+        display: flex
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        min-width: 70px
 @media only screen and (max-width: 992px)
     .ohr-profile-divider-container
         display: none
+@media only screen and (max-width: 768px)
+    .profile-desktop-privacy
+        display: none !important
+    .ohr-profile-heading
+        display: none !important
+    .ohr-profile-user-name
+        margin-bottom: 19px !important
+        margin-top: 0px !important
+        h1
+            text-align: center
+            font-size: 21px
+        p
+            text-align: center
+            font-size: 10px
+    .profile-mobile-toggle
+        display: block !important
 </style>
