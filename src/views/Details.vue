@@ -54,14 +54,24 @@
             <div class="ohr-col-4">
               <ohr-blue-button text="Deposit" />
             </div>
-            <div class="ohr-col-1"> </div>
+            <div class="ohr-col-1"></div>
             <div class="ohr-col-4">
               <ohr-gray-button text="Withdraw" />
             </div>
           </div>
         </div>
-        <div class="ohr-col-4"></div>
-        <div class="ohr-col-4"></div>
+        <div class="ohr-col-4 ohr-feed-container">
+          <div class="ohr-row ohr-no-gutter ohr-v-center">
+            <p>Feed</p>
+            <span class="ohr-hor-line"></span>
+          </div>
+        </div>
+        <div class="ohr-col-4 ohr-members-container">
+          <div class="ohr-row ohr-no-gutter ohr-v-center">
+            <p>Members <span class="ohr-members-count"> 100 </span></p>
+            <span class="ohr-hor-line"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -116,8 +126,35 @@ export default {
     flex-direction: column
     justify-content: flex-start
     height: 100%
+
+    .ohr-feed-container
+        padding: 20px 60px
+        border-right: 1px solid #707070
+        height: 500px
+        .ohr-hor-line
+            height: 1px
+            background-color: #D8D8D8
+            width: 80%
+            margin-left: 8px
+    .ohr-members-container
+        padding: 20px 60px
+        height: 500px
+        .ohr-hor-line
+            height: 1px
+            background-color: #D8D8D8
+            width: 60%
+            margin-left: 8px
+        .ohr-members-count
+            height: 17px
+            padding: 4px
+            border: 1px solid #707070
+            border-radius: 8px
+            width: 100px
+            font-size: 10px
     .ohr-details-summary
         border-right: 1px solid #707070
+        height: 500px
+
         .ohr-summary-section
             align-items: baseline !important
             margin: 45px 0px
