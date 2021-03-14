@@ -65,15 +65,32 @@
             <p>Feed</p>
             <span class="ohr-hor-line"></span>
           </div>
-          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
-          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
-          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
-
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
         </div>
         <div class="ohr-col-4 ohr-members-container">
           <div class="ohr-row ohr-no-gutter ohr-v-center">
-            <p>Members <span class="ohr-members-count"> 100 </span></p>
-            <span class="ohr-hor-line"></span>
+              <p>Members</p>
+            <div class="ohr-col-9 ohr-no-gutter ohr-v-center ohr-h-center">
+              <span class="ohr-members-count"> 100 </span>
+              <div class="ohr-hor-line"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -84,9 +101,9 @@
 <script>
 import OhrBlueButton from "../components/common/OhrBlueButton.vue";
 import OhrGrayButton from "../components/common/OhrGrayButton.vue";
-import FeedItem from '../components/feed/FeedItem.vue';
+import FeedItem from "../components/feed/FeedItem.vue";
 export default {
-  components: { OhrBlueButton, OhrGrayButton, FeedItem},
+  components: { OhrBlueButton, OhrGrayButton, FeedItem },
 };
 </script>
 
@@ -144,20 +161,24 @@ export default {
             width: 80%
             margin-left: 8px
     .ohr-members-container
-        padding: 20px 60px
+        padding: 20px 20px
         height: 500px
         .ohr-hor-line
             height: 1px
             background-color: #D8D8D8
-            width: 60%
+            width: 100%
             margin-left: 8px
         .ohr-members-count
-            height: 17px
-            padding: 4px
+            height: 22px
+            padding: 8px
             border: 1px solid #707070
             border-radius: 8px
-            width: 100px
+            width: 50px
             font-size: 10px
+            display: flex
+            justify-content: center
+            align-items: center
+            margin-left: 4px
     .ohr-details-summary
         border-right: 1px solid #707070
         height: 500px
