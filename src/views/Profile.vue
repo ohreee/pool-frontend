@@ -38,7 +38,10 @@
         </div>
       </div>
       <div class="ohr-row">
-        <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
+        <div
+          v-if="isDetailsSelected"
+          class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12 profile-mobile-details-container"
+        >
           <div class="ohr-profile-heading">
             <p>Details</p>
             <div></div>
@@ -105,6 +108,32 @@
             </div>
           </div>
         </div>
+
+        <div
+          v-if="!isDetailsSelected"
+          class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12 profile-mobile-privacy-container"
+        >
+          <div class="ohr-profile-heading">
+            <p>Privacy</p>
+            <div></div>
+          </div>
+          <div class="ohr-row ohr-no-gutter">
+            <div class="ohr-col-12 ohr-no-gutter">
+              <div class="ohr-privacy-element">
+                <h5>Account 2FA Protection</h5>
+                <div>
+                  <ohr-toggle :checked="true" />
+                </div>
+              </div>
+              <div class="ohr-privacy-element">
+                <h5>Upload ID Card</h5>
+                <div>
+                  <p><u>Uploaded</u></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -120,14 +149,16 @@ export default {
     };
   },
   methods: {
-      toggleView(){
-          this.isDetailsSelected = !this.isDetailsSelected
-      }
-  }
+    toggleView() {
+      this.isDetailsSelected = !this.isDetailsSelected;
+    },
+  },
 };
 </script>
 
 <style lang="sass" scoped>
+.profile-mobile-privacy-container, .profile-mobile-details-container
+    min-height: 460px
 .ohr-profile-container
   max-width: 1560px
   margin: auto
@@ -232,4 +263,17 @@ export default {
             font-size: 10px
     .profile-mobile-toggle
         display: block !important
+
+    .ohr-privacy-element
+        margin-bottom: 37px
+        display: flex
+        justify-content: space-between
+        h5
+            color: #252E65
+            font-size: 14px
+            font-weight: bold
+        div
+            p
+                color: #252E65
+                font-size: 10px
 </style>
