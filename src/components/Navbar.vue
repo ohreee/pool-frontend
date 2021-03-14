@@ -182,6 +182,7 @@ export default {
   height: 100%
   padding: 61px 70px
   transition: .3s
+  z-index: 10
   .ohr-user
     margin-top: 8px
     margin-bottom: 100px

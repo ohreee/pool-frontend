@@ -6,6 +6,7 @@ import CreateCooperative from '../views/CreateCooperative.vue';
 import EditCooperative from '../views/EditCooperative.vue';
 import Profile from '../views/Profile.vue';
 import Home from '../views/Home.vue';
+import Details from '../views/Details.vue'
 
 
 const routes = [{
@@ -23,6 +24,10 @@ const routes = [{
     {
         path: '/settings',
         component: Profile
+    },
+    {
+        path: '/details',
+        component: Details
     },
 ]
 
