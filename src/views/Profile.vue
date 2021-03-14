@@ -62,6 +62,22 @@
             <p>Privacy</p>
             <div></div>
           </div>
+          <div class="ohr-row ohr-no-gutter">
+              <div class="ohr-col-12 ohr-no-gutter">
+                <div class="ohr-privacy-element">
+                  <h5>Account 2FA Protection</h5>
+                  <div>
+                      <ohr-toggle :checked="true"/>
+                  </div>
+                </div>
+                <div class="ohr-privacy-element">
+                  <h5>Upload ID Card</h5>
+                  <div>
+                      <p><u>Uploaded</u></p>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -69,7 +85,9 @@
 </template>
 
 <script>
-export default {};
+import OhrToggle from '../components/common/OhrToggle.vue';
+export default {
+  components: { OhrToggle },};
 </script>
 
 <style lang="sass" scoped>
@@ -119,7 +137,18 @@ export default {};
         font-size: 16px
         font-weight: bold
         margin-top: 4px
-
+.ohr-privacy-element
+    margin-bottom: 54px
+    display: flex
+    justify-content: space-between
+    h5
+        color: #252E65
+        font-size: 18px
+        font-weight: bold
+    div
+        p
+            color: #252E65
+            font-size: 12px
 @media only screen and (max-width: 992px)
     .ohr-profile-divider-container
         display: none
