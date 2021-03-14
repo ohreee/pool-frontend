@@ -61,10 +61,14 @@
           </div>
         </div>
         <div class="ohr-col-4 ohr-feed-container">
-          <div class="ohr-row ohr-no-gutter ohr-v-center">
+          <div class="ohr-row ohr-no-gutter ohr-feed-head ohr-v-center">
             <p>Feed</p>
             <span class="ohr-hor-line"></span>
           </div>
+          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
+          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
+          <feed-item username="@mechaadi" eth="0.50 ETH" data="deposited by" date="19/02/2021 9:44am"/>
+
         </div>
         <div class="ohr-col-4 ohr-members-container">
           <div class="ohr-row ohr-no-gutter ohr-v-center">
@@ -80,8 +84,9 @@
 <script>
 import OhrBlueButton from "../components/common/OhrBlueButton.vue";
 import OhrGrayButton from "../components/common/OhrGrayButton.vue";
+import FeedItem from '../components/feed/FeedItem.vue';
 export default {
-  components: { OhrBlueButton, OhrGrayButton },
+  components: { OhrBlueButton, OhrGrayButton, FeedItem},
 };
 </script>
 
@@ -128,9 +133,11 @@ export default {
     height: 100%
 
     .ohr-feed-container
-        padding: 20px 60px
+        padding: 20px 40px
         border-right: 1px solid #707070
         height: 500px
+        .ohr-feed-head
+            margin-bottom: 50px
         .ohr-hor-line
             height: 1px
             background-color: #D8D8D8
