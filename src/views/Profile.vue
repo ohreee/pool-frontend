@@ -1,0 +1,126 @@
+<template>
+  <div class="ohr-wrapper">
+    <div class="ohr-profile-container">
+      <div class="ohr-row">
+        <div class="ohr-col-12 ohr-profile-user-name">
+          <h1>
+            Noble Jang
+          </h1>
+          <p>
+            <u>
+              Edit Profile
+            </u>
+          </p>
+        </div>
+      </div>
+      <div class="ohr-row">
+        <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
+          <div class="ohr-profile-heading">
+            <p>Details</p>
+            <div></div>
+          </div>
+          <div class="ohr-row ohr-no-gutter">
+            <div class="ohr-col-8 ohr-col-lg-12 ohr-no-gutter">
+              <div class="ohr-profile-widget">
+                <h1>Name</h1>
+                <p>Noble Jang</p>
+              </div>
+              <div class="ohr-profile-widget">
+                <h1>Email</h1>
+                <p>noblejang@gmail.com</p>
+              </div>
+              <div class="ohr-profile-widget">
+                <h1>Phone Number</h1>
+                <p>+44 619 0393 3031</p>
+              </div>
+              <div class="ohr-profile-widget">
+                <h1>Date of Birth</h1>
+                <p>19/11/1999</p>
+              </div>
+              <div class="ohr-profile-widget">
+                <h1>Address</h1>
+                <p>Old Paire 92X</p>
+              </div>
+            </div>
+            <div class="ohr-col-4 ohr-col-lg-12 ohr-no-gutter">
+              <div class="ohr-profile-widget">
+                <h1>City</h1>
+                <p>Manchester</p>
+              </div>
+              <div class="ohr-profile-widget">
+                <h1>Country</h1>
+                <p>United Kingdom</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ohr-col-1 ohr-h-center ohr-profile-divider-container">
+          <div class="ohr-profile-divider"></div>
+        </div>
+        <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
+          <div class="ohr-profile-heading">
+            <p>Privacy</p>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="sass" scoped>
+.ohr-profile-container
+  max-width: 1560px
+  margin: auto
+  padding: 60px 24px
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  height: 100%
+.ohr-profile-user-name
+    margin-bottom: 74px
+    margin-top: 20px
+    h1
+        color: #252E65
+        font-size: 49px
+        font-weight: bold
+    p
+        color: #252E65
+        font-size: 16px
+        margin-top: 13px
+        cursor: pointer
+.ohr-profile-divider
+    background-color: #707070
+    width: 1px
+    height: 100%
+    min-height: 360px
+.ohr-profile-heading
+    display: flex
+    color: #032C60
+    margin-bottom: 32px
+    align-items: center
+    div
+        background-color: #D8D8D8
+        height: 1px
+        width: 100%
+        margin-left: 16px
+
+.ohr-profile-widget
+    margin-bottom: 26px
+    h1
+        color: #BC202E
+        font-size: 10px
+    p
+        color: #252E65
+        font-size: 16px
+        font-weight: bold
+        margin-top: 4px
+
+@media only screen and (max-width: 992px)
+    .ohr-profile-divider-container
+        display: none
+</style>

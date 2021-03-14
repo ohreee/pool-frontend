@@ -19,9 +19,12 @@
       </div>
       <div class="ohr-navbar-menu-list">
         <p @click="handleToggleDrawer">
-          <router-link to="/create-cooperative"> Cooperative </router-link></p>
+          <router-link to="/create-cooperative"> Cooperative </router-link>
+        </p>
         <div class="ohr-menu-divider" />
-        <p>Settings</p>
+        <p @click="handleToggleDrawer">
+          <router-link to="/settings"> Settings </router-link>
+        </p>
         <div class="ohr-menu-divider" />
         <p>Wallet</p>
       </div>
@@ -48,7 +51,9 @@
       <div class="ohr-navbar-menu-list">
         <p>New Cooperative</p>
         <div class="ohr-menu-divider" />
-        <p>Settings</p>
+        <p @click="handleDesktopToggleDrawer">
+          <router-link to="/settings"> Settings </router-link>
+        </p>
         <div class="ohr-menu-divider" />
         <p>Wallet</p>
       </div>
@@ -57,10 +62,9 @@
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-8 ohr-v-center ohr-no-gutter ">
           <div class="ohr-row ohr-v-center ohr-h-100 ohr-left ohr-no-gutter">
-        <router-link to="/home">
-           
-            <img alt="logo" class="ohr-logo" src="@/assets/logo.svg" />
-        </router-link>
+            <router-link to="/home">
+              <img alt="logo" class="ohr-logo" src="@/assets/logo.svg" />
+            </router-link>
             <img
               @click="handleToggleDrawer"
               alt="menu"
@@ -98,14 +102,13 @@
       <div class="ohr-row ohr-v-center ohr-h-100">
         <div class="ohr-col-8 ohr-v-center ohr-no-gutter ">
           <div class="ohr-row ohr-v-center ohr-h-100 ohr-left ohr-no-gutter">
-        <router-link to="/home">
-            
-            <img
-              alt="logo"
-              class="ohr-logo-desktop"
-              src="@/assets/logo-desktop.svg"
-            />
-        </router-link>
+            <router-link to="/home">
+              <img
+                alt="logo"
+                class="ohr-logo-desktop"
+                src="@/assets/logo-desktop.svg"
+              />
+            </router-link>
           </div>
         </div>
         <div class="ohr-col-4 ohr-v-center ohr-right ohr-no-gutter">
@@ -130,8 +133,7 @@
             </div>
           </div>
           <img
-          @click="handleDesktopToggleDrawer"
-
+            @click="handleDesktopToggleDrawer"
             alt="menu"
             class="ohr-hamburger"
             src="@/assets/icons/ham-burger.svg"
