@@ -94,7 +94,22 @@
           </div>
 
           <div class="ohr-chatbox">
-            <div class="ohr-chatbox-list"></div>
+            <div class="ohr-chatbox-list">
+              <RemoteMessage
+                author="Samuel Wright"
+                text="We can create an organization that would bring the change we want in our community"
+              />
+              <RemoteMessage
+                author="Yetunde Sowore"
+                text="You're wright..lol"
+              />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+            </div>
 
             <div class="ohr-chatbox-input-box">
               <input placeholder="Write a message..." />
@@ -194,7 +209,22 @@
 
         <div v-else>
           <div class="ohr-chatbox">
-            <div class="ohr-chatbox-list"></div>
+            <div class="ohr-chatbox-list">
+              <RemoteMessage
+                author="Samuel Wright"
+                text="We can create an organization that would bring the change we want in our community"
+              />
+              <RemoteMessage
+                author="Yetunde Sowore"
+                text="You're wright..lol"
+              />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+              <Message author="Noble Jang" text="I'll desposit tomorrow." />
+            </div>
 
             <div class="ohr-chatbox-input-box">
               <input placeholder="Write a message..." />
@@ -213,8 +243,17 @@
 import OhrBlueButton from "../components/common/OhrBlueButton.vue";
 import OhrGrayButton from "../components/common/OhrGrayButton.vue";
 import FeedItem from "../components/feed/FeedItem.vue";
+import RemoteMessage from "../components/chat/RemoteMessage.vue";
+import Message from "../components/chat/Message.vue";
+
 export default {
-  components: { OhrBlueButton, OhrGrayButton, FeedItem },
+  components: {
+    RemoteMessage,
+    Message,
+    OhrBlueButton,
+    OhrGrayButton,
+    FeedItem,
+  },
   data() {
     return {
       activeTab: 0,
@@ -285,7 +324,8 @@ export default {
   .ohr-chatbox-list
     background-color: #fff
     border-radius: 15px
-    height: 315px
+    max-height: 315px
+    overflow: auto
     width: 100%
   .ohr-chatbox-input-box
     margin-top: 14px
