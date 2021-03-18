@@ -48,4 +48,22 @@ export default {
         p
             color: #252E65
             font-size: 10px
+
+@media only screen and (max-width: 576px)
+.ohr-feed-info
+    .ohr-feed-info-eth
+        color: #252E65
+        font-weight: bold
+        font-size: 14px !important
+    .ohr-feed-info-data
+        color: #252E65
+        font-size: 14px !important
+    .ohr-feed-info-username
+        color: #252E65
+        font-weight: bold
+        font-size: 14px !important
+.ohr-feed-date
+    p
+        color: #252E65
+        font-size: 7px !important
 </style>

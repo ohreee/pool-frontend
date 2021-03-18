@@ -6,7 +6,7 @@
           <div class="ohr-col-8 ohr-details-header-text">
             <h1>Uhuru Community Project</h1>
             <div class="ohr-row ohr-no-gutter ohr-details-sub-list">
-              <div class="ohr-col-1">
+              <div class="ohr-col-1 ohr-v-center">
                 <p class="ohr-active">
                   MEMBER
                 </p>
@@ -14,8 +14,8 @@
               <div class="ohr-header-divider ohr-col-1 ohr-h-center">
                 <div></div>
               </div>
-              <div class="ohr-col-4">
-                <p>
+              <div class="ohr-col-4 ohr-col-sm-6 ohr-v-center">
+                <p class="ohr-inactive">
                   SET RULES
                 </p>
               </div>
@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <div class="ohr-details-container">
+    <div class="ohr-details-container ohr-desktop">
       <div class="ohr-row">
-        <div class="ohr-col-4 ohr-details-summary">
+        <div class="ohr-col-4 ohr-col-lg-12 ohr-details-summary">
           <div class="ohr-row ohr-no-gutter ohr-summary-section">
             <div class="ohr-col-6">
               <p class="ohr-details-summary-data">ETH <span>50</span></p>
@@ -60,7 +60,7 @@
             </div>
           </div>
         </div>
-        <div class="ohr-col-4 ohr-feed-container">
+        <div class="ohr-col-4 ohr-col-lg-12 ohr-feed-container">
           <div class="ohr-row ohr-no-gutter ohr-feed-head ohr-v-center">
             <p>Feed</p>
             <span class="ohr-hor-line"></span>
@@ -84,12 +84,123 @@
             date="19/02/2021 9:44am"
           />
         </div>
-        <div class="ohr-col-4 ohr-members-container">
+        <div class="ohr-col-4 ohr-col-lg-12 ohr-members-container">
           <div class="ohr-row ohr-no-gutter ohr-v-center">
-              <p>Members</p>
+            <p>Members</p>
             <div class="ohr-col-9 ohr-no-gutter ohr-v-center ohr-h-center">
               <span class="ohr-members-count"> 100 </span>
               <div class="ohr-hor-line"></div>
+            </div>
+          </div>
+
+          <div class="ohr-chatbox">
+            <div class="ohr-chatbox-list"></div>
+
+            <div class="ohr-chatbox-input-box">
+              <input placeholder="Write a message..." />
+              <button>
+                <img src="@/assets/icons/send.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ohr-mobile">
+      <div class="ohr-row ohr-v-center">
+        <div
+          class="ohr-col-3 ohr-no-gutter ohr-details-mobile-sum ohr-right-border"
+        >
+          <p class="ohr-details-summary-data-mobile">ETH <span>50</span></p>
+          <p class="ohr-details-summary-info-mobile">TARGET</p>
+        </div>
+        <div
+          class="ohr-col-3 ohr-no-gutter ohr-details-mobile-sum ohr-right-border"
+        >
+          <p class="ohr-details-summary-data-mobile">ETH <span>15</span></p>
+          <p class="ohr-details-summary-info-blue-mobile">TOTAL<br />POOLED</p>
+        </div>
+
+        <div
+          class="ohr-col-3 ohr-no-gutter ohr-details-mobile-sum ohr-right-border"
+        >
+          <p class="ohr-details-summary-data-mobile">20/07/21</p>
+          <p class="ohr-details-summary-info-mobile">DUE<br />DATE</p>
+        </div>
+        <div class="ohr-col-3 ohr-details-mobile-sum ohr-no-gutter">
+          <p class="ohr-details-summary-data-mobile"><span>15</span></p>
+          <p class="ohr-details-summary-info-blue-mobile">
+            MEMBERS<br />POOLED
+          </p>
+        </div>
+      </div>
+
+      <div class="ohr-details-mobile-tab-container">
+        <div
+          @click="toggleButton(0)"
+          :class="
+            activeTab == 0
+              ? 'ohr-details-mobile-tab-active'
+              : 'ohr-details-mobile-tab'
+          "
+        >
+          Feed
+        </div>
+        <div
+          @click="toggleButton(1)"
+          :class="
+            activeTab == 1
+              ? 'ohr-details-mobile-tab-active'
+              : 'ohr-details-mobile-tab'
+          "
+        >
+          Members
+        </div>
+      </div>
+
+      <div class="ohr-details-mobile-viewpager">
+        <div v-if="activeTab == 0">
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+          <feed-item
+            username="@mechaadi"
+            eth="0.50 ETH"
+            data="deposited by"
+            date="19/02/2021 9:44am"
+          />
+        </div>
+
+        <div v-else>
+          <div class="ohr-chatbox">
+            <div class="ohr-chatbox-list"></div>
+
+            <div class="ohr-chatbox-input-box">
+              <input placeholder="Write a message..." />
+              <button>
+                <img src="@/assets/icons/send.svg" />
+              </button>
             </div>
           </div>
         </div>
@@ -104,10 +215,101 @@ import OhrGrayButton from "../components/common/OhrGrayButton.vue";
 import FeedItem from "../components/feed/FeedItem.vue";
 export default {
   components: { OhrBlueButton, OhrGrayButton, FeedItem },
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
+  methods: {
+    toggleButton(v) {
+      this.activeTab = v;
+    },
+  },
 };
 </script>
 
 <style lang="sass" scoped>
+.ohr-mobile
+  display: none
+  padding: 20px
+  min-height: 600px
+  .ohr-details-mobile-viewpager
+    padding: 4px 8px
+  .ohr-details-mobile-tab-container
+    height: 43px
+    width: 100%
+    border-radius: 15px
+    background-color: #fff
+    margin-top: 13px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 4px 16px
+    .ohr-details-mobile-tab
+      height: 31px
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: 15px
+      color: #032C60
+      cursor: pointer
+    .ohr-details-mobile-tab-active
+      height: 31px
+      background-color: #F3F3F3
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 0px 8px
+      border-radius: 10px
+      font-size: 15px
+      color: #032C60
+      cursor: pointer
+  .ohr-details-mobile-sum
+    padding-left: 16px
+  .ohr-right-border
+    border-right: 1px solid #D8D8D8
+  .ohr-details-summary-data-mobile
+    font-size: 15px
+    font-family: 'Lato' !important
+    span
+      font-size: 25px
+  .ohr-details-summary-info-mobile
+    font-size: 10px
+    color: #BC202E
+  .ohr-details-summary-info-blue-mobile
+    font-size: 10px
+    color: #252E65
+
+.ohr-chatbox
+  margin-top: 24px
+  .ohr-chatbox-list
+    background-color: #fff
+    border-radius: 15px
+    height: 315px
+    width: 100%
+  .ohr-chatbox-input-box
+    margin-top: 14px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    input
+      background-color: #fff
+      border-radius: 5px
+      height: 39px
+      width: 88%
+      border: none
+      outline: none
+      padding: 4px 16px
+    button
+      background-color: transparent
+      display: flex
+      justify-content: center
+      align-items: center
+      cursor: pointer
+      width: 10%
+      height: 39px
+      border: none
+
 .ohr-details-header
     background-color: #252E65
     height: 205px
@@ -198,4 +400,43 @@ export default {
         .ohr-details-summary-info
             color: #BC202E
             font-size: 15px
+
+@media only screen and (max-width: 992px)
+  .ohr-details-header-text
+    h1
+      font-size: 30px !important
+    .ohr-active
+      font-size: 16px !important
+    .ohr-inactive
+      font-size: 16px !important
+  .ohr-details-summary
+    border: none !important
+  .ohr-feed-container
+    border: none !important
+
+@media only screen and (max-width: 576px)
+  .ohr-mobile
+    display: block !important
+  .ohr-desktop
+    display: none
+  .ohr-details-header-text
+    h1
+      font-size: 20px !important
+    .ohr-active
+      font-size: 10px !important
+    .ohr-inactive
+      font-size: 10px !important
+  .ohr-details-header
+    padding: 16px
+    height: 160px !important
+  .ohr-details-sub-list
+    margin-top: 16px !important
+  .ohr-header-divider
+    height: 30px !important
+    div
+      height: 100% !important
+  .ohr-details-image
+    img
+      height: 88px !important
+      width: 88px !important
 </style>
