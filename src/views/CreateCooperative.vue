@@ -14,7 +14,8 @@
       </div>
       <div class="ohr-row ohr-create-co-actions">
         <div class="ohr-col-12">
-        <ohr-blue-button text="Save"/>
+          <ohr-blue-button text="Save"/>
+          <input type="button" value="Add pool"  @click="onClickAddPoolBtn"/>
         </div>
       </div>
     </div>
@@ -22,10 +23,61 @@
 </template>
 
 <script>
-import OhrBlueButton from '../components/common/OhrBlueButton.vue';
+import OhrBlueButton from "../components/common/OhrBlueButton.vue";
 import OhrInput from "../components/common/OhrInput.vue";
+import { mapGetters } from "vuex";
 export default {
   components: { OhrInput, OhrBlueButton },
+  data: () => {
+    return {
+      namePool: "",
+      descriptionPool: "",
+      isPublic: true,
+      amount_deposit: 0,
+    };
+  },
+  computed: {
+    ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
+    ...mapGetters("contracts", ["getContractData", "contractInstances"]),
+    ...mapGetters("accounts", ["activeAccount"]),
+    PoolList() {
+      if (this.isDrizzleInitialized) {
+        const data = this.getContractData({
+          contract: "PoolRecorder",
+          method: "getListPools",
+        });
+        return data;
+      }
+      return -1;
+    },
+  },
+  methods: {
+    getPoolInfo(addressPool) {
+      if (this.isDrizzleInitialized) {
+        var dataKey = this.drizzleInstance.contracts.PoolRecorder.methods.getPoolInfo.cacheCall(
+          addressPool
+        );
+        return this.$store.getters["contracts/contractInstances"].PoolRecorder
+          .getPoolInfo[dataKey].value;
+      }
+      return -1;
+    },
+    onClickAddPoolBtn() {
+      this.drizzleInstance.contracts.PoolRecorder.methods.createPool.cacheSend(
+        this.namePool,
+        this.descriptionPool,
+        this.isPublic,
+        this.activeAccount
+      );
+    },
+    updateAddress(address) {
+      // this.$store.commit("updateAddress", address);
+      this.$router.push({
+        path: "/simplebank?address=" + address,
+        params: { address: address },
+      });
+    },
+  },
 };
 </script>
 
