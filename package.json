@@ -5,14 +5,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
+    "@drizzle/store": "^1.5.3",
+    "@drizzle/vue-plugin": "^0.1.3",
     "core-js": "^3.6.4",
+    "drizzle": "^1.4.0",
     "sass": "^1.32.8",
     "sass-loader": "10.1.1",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vuex": "^3.6.2",
+    "web3": "^1.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -41,5 +47,8 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "resolutions": {
+    "scrypt.js": "0.3.0"
+  }
 }
