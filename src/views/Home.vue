@@ -6,7 +6,7 @@
         <div class="ohr-card-container">
           <newcard />
         </div>
-        <div class="ohr-card-container">
+        <div class="ohr-card-container" v-if="!PoolList.length">
           <card
             title="Uhuru Community
                   Project"
@@ -15,7 +15,7 @@
             image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
           />
         </div>
-        <div class="ohr-card-container">
+        <div class="ohr-card-container" v-if="!PoolList.length">
           <card
             title="Samira, Saidu
             and Friends"
@@ -24,7 +24,7 @@
             image="https://cdn.discordapp.com/attachments/818922919715536909/819624768385843220/img2.png"
           />
         </div>
-        <div class="ohr-card-container">
+        <div class="ohr-card-container" v-if="!PoolList.length">
           <card
             title="Samira, Saidu
                 and Friends "
@@ -33,6 +33,15 @@
             image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
           />
         </div>
+        <div v-for="(address, i) in PoolList" :key="i">
+          <div class="ohr-card-container">
+            <card
+              :address_block="address"
+              :is_public="true"
+              :description="90"
+            />
+          </div>
+        </div>
       </div>
       <button class="ohr-home-view-more">View More</button>
     </div>
@@ -40,12 +49,36 @@
 </template>
 
 <script>
-import Card from "../components/home/card.vue";
+import { mapGetters } from "vuex";
+import Card from "../components/home/card-pool.vue";
 import Newcard from "../components/home/newcard.vue";
 export default {
   components: {
     Card,
     Newcard,
+  },
+  computed: {
+    ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
+    ...mapGetters("contracts", ["getContractData", "contractInstances"]),
+    ...mapGetters("accounts", ["activeAccount"]),
+    PoolList() {
+      if (this.isDrizzleInitialized) {
+        const data = this.getContractData({
+          contract: "PoolRecorder",
+          method: "getListPools",
+        });
+        console.log("data", data);
+        return data;
+      }
+      return -1;
+    },
+  },
+  created() {
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: "PoolRecorder", // i.e. TwistedAuctionMock
+      method: "getListPools",
+      methodArgs: [], // No args required for this method
+    });
   },
 };
 </script>

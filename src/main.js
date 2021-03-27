@@ -24,6 +24,7 @@ const store = new Vuex.Store({
 Vue.use(drizzleVuePlugin, { store, drizzleOptions });
 
 new Vue({
+  store,
     router,
     render: h => h(App),
 }).$mount('#app');
