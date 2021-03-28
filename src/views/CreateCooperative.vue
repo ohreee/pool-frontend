@@ -6,27 +6,21 @@
         <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12 ohr-col-custom">
           <ohr-input type="text" @onChange="(e) => (name = e)" label="Name" />
           <ohr-input
-            type="number"
-            @onChange="(e) => (numberOfMembers = e)"
-            label="Number Of members"
+            type="text"
+            @onChange="(e) => (description = e)"
+            label="Description"
           />
           <ohr-input
-            type="number"
-            @onChange="(e) => (targetPool = e)"
-            label="Target Pool"
+            type="checkbox"
+            @onChange="(e) => (isPublic = e)"
+            label="Public"
           />
-        </div>
-        <div class="ohr-col-4 ohr-col-lg-6 ohr-col-md-12">
-          <ohr-input
-            type="date"
-            @onChange="(e) => (dueDate = e)"
-            label="Due Date"
-          />
-        </div>
-      </div>
-      <div class="ohr-row ohr-create-co-actions">
-        <div class="ohr-col-12">
-          <ohr-blue-button @onClick="handleClick" text="Save" />
+          <!-- <ohr-toggle /> -->
+          <div class="ohr-row ohr-create-co-actions">
+            <div class="ohr-col-12">
+              <ohr-blue-button @onClick="handleClick" text="Save" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,15 +30,15 @@
 <script>
 import OhrBlueButton from "../components/common/OhrBlueButton.vue";
 import OhrInput from "../components/common/OhrInput.vue";
+import OhrToggle from "../components/common/OhrToggle.vue"
 import { mapGetters } from "vuex";
 export default {
-  components: { OhrInput, OhrBlueButton },
+  components: { OhrInput, OhrBlueButton, OhrToggle },
   data() {
     return {
       name: "",
-      numberOfMembers: 0,
-      targetPool: 0,
-      dueDate: "",
+      description: "",
+      isPublic: true,
     };
   },
   computed: {
@@ -74,11 +68,9 @@ export default {
       return -1;
     },
     handleClick() {
-      console.log("Button clicked");
-      console.log(this.name);
       this.drizzleInstance.contracts.PoolRecorder.methods.createPool.cacheSend(
-        this.namePool,
-        this.descriptionPool,
+        this.name,
+        this.description,
         this.isPublic,
         this.activeAccount
       );
