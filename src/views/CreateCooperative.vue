@@ -75,13 +75,6 @@ export default {
         this.activeAccount
       );
     },
-    updateAddress(address) {
-      // this.$store.commit("updateAddress", address);
-      this.$router.push({
-        path: "/simplebank?address=" + address,
-        params: { address: address },
-      });
-    },
   },
 };
 </script>

@@ -6,7 +6,7 @@
         <div class="ohr-col-8 ohr-h-100 ohr-no-gutter">
           <p class="title">{{ title }}</p>
           <p class="description">{{ description }}</p>
-          <button :class="'join'">
+          <button :class="'join'" @click="handleClick">
             {{ "JOIN" }}
           </button>
         </div>
@@ -21,7 +21,13 @@ export default {
     title: [String],
     description: [String],
     image: [String],
+    address: [String]
   },
+    methods: {
+      handleClick(){
+          this.$emit('onClick', this.address);
+      }
+  }
 };
 </script>
 
