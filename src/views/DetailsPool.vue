@@ -47,6 +47,10 @@
               <p class="ohr-details-summary-data"><span>{{ getParticipantList.length}}</span></p>
               <p class="ohr-details-summary-info-blue">MEMBERS<br />POOLED</p>
             </div>
+            <div class="ohr-col-6">
+              <p class="ohr-details-summary-data">cETH <span>{{ balanceOf }}</span></p>
+              <p class="ohr-details-summary-info-blue">Balance of<br />underlying</p>
+            </div>
           </div>
           <div class="ohr-row">
           <ohr-input
@@ -54,12 +58,15 @@
             @onChange="(e) => (amount = e)"
             label="Amount"
           />
-            <div class="ohr-col-4">
+          
+            <div class="ohr-col-1">
               <ohr-blue-button text="Deposit" @onClick="onClickDepositBtn()"/>
             </div>
-            <div class="ohr-col-1"></div>
-            <div class="ohr-col-4">
+            <div class="ohr-col-1">
               <ohr-gray-button text="Withdraw" @onClick="onClickWithdrawBtn()"/>
+            </div>
+            <div class="ohr-col-1">
+              <ohr-red-button text="Invest" @onClick="onClickInvestBtn()"/>
             </div>
           </div>
         </div>
@@ -143,6 +150,7 @@ import RemoteMessage from "../components/chat/RemoteMessage.vue";
 import Message from "../components/chat/Message.vue";
 import OhrInput from "../components/common/OhrInput.vue";
 import PoolFactory from "../../../build/contracts/PoolFactory.json";
+import compoundCEthContractAbi from "../contracts/ceth_abi.json"
 import { mapGetters } from "vuex";
 
 export default {
@@ -158,14 +166,33 @@ export default {
     return {
       activeTab: 0,
       amount: 0,
-      newAddressParticipant: ""
+      newAddressParticipant: "",
+      var1: "", var2: "",
+      compoundCEthContract : null
+
     };
   },
   computed: {
     ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
     ...mapGetters("accounts", ["activeAccount"]),
     ...mapGetters("contracts", ["getContractData"]),
-  
+     balanceOf() {
+      if (this.isDrizzleInitialized) {
+        var dataKey = this.drizzleInstance.contracts.compoundCEthContract.methods.balanceOf.cacheCall(
+          this.$route.query.address
+        );
+        return this.$store.getters["contracts/contractInstances"].compoundCEthContract
+          .balanceOf[dataKey].value / 1e8;
+      }
+      return -1;
+    },
+    amount_hex() {
+          return this.drizzleInstance.web3.utils.toHex(this.drizzleInstance.web3.utils.toWei(
+          this.amount,
+          "ether"
+        ))
+    },
+
     is_owner() {
     if (this.isDrizzleInitialized) {
         return this.get_owner == this.activeAccount;
@@ -245,6 +272,15 @@ export default {
         from: this.activeAccount
       });
     },
+    onClickInvestBtn() {
+      this.drizzleInstance.contracts[
+        this.$route.query.address
+      ].methods.supplyEthToCompound.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+      {
+        from: this.activeAccount,
+        value: this.amount_hex,
+      });
+    },
     onClickAddBtn() {
       this.drizzleInstance.contracts[
         this.$route.query.address
@@ -275,8 +311,17 @@ export default {
           this.$route.query.address
         ),
       };
+      this.drizzleInstance.addContract(contractConfig);
+      var contractConfig = {
+        contractName: "compoundCEthContract",
+        web3Contract: new this.drizzleInstance.web3.eth.Contract(
+          compoundCEthContractAbi,
+          "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5"
+        ),
+      };
     this.drizzleInstance.addContract(contractConfig);
     }
+    // this.compoundCEthContract = new this.drizzleInstance.web3.eth.Contract(compoundCEthContractAbi, '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5');
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "is_owner",
@@ -311,6 +356,18 @@ export default {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "balanceParticipant",
       methodArgs: [this.activeAccount] // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      method: "exchangeRateCurrent",
+      methodArgs: [] // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
+      method: "balanceOf",
+      methodArgs: [this.$route.query.address] // No args required for this method
     });
 
     
