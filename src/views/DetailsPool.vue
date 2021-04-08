@@ -66,7 +66,10 @@
               <ohr-gray-button text="Withdraw" @onClick="onClickWithdrawBtn()"/>
             </div>
             <div class="ohr-col-1">
-              <ohr-red-button text="Invest" @onClick="onClickInvestBtn()"/>
+              <ohr-gray-button text="Redeem" @onClick="onClickRedeemBtn()"/>
+            </div>
+            <div class="ohr-col-1">
+              <ohr-gray-button text="Invest" @onClick="onClickInvestBtn()"/>
             </div>
           </div>
         </div>
@@ -275,10 +278,22 @@ export default {
     onClickInvestBtn() {
       this.drizzleInstance.contracts[
         this.$route.query.address
-      ].methods.supplyEthToCompound.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+      ].methods.deposit2.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
       {
         from: this.activeAccount,
         value: this.amount_hex,
+      });
+    },
+    onClickRedeemBtn() {
+      console.log("this.drizzleInstance.web3.utils.toWei(toString(this.balance*10e18))", this.balance*1e18)
+      this.drizzleInstance.contracts[
+        this.$route.query.address
+      ].methods.redeemCEth.cacheSend(
+        this.balance*1e18,
+        false,
+        '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+      {
+        from: this.activeAccount,
       });
     },
     onClickAddBtn() {
@@ -360,17 +375,16 @@ export default {
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      method: "redeemCEth",
+      methodArgs: ["amount", "redeemType", "_cEtherContract"] // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "exchangeRateCurrent",
       methodArgs: [] // No args required for this method
     });
 
-    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
-      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
-      method: "balanceOf",
-      methodArgs: [this.$route.query.address] // No args required for this method
-    });
-
-    
   },
 };
 </script>
