@@ -48,7 +48,7 @@
               <p class="ohr-details-summary-info-blue">MEMBERS<br />POOLED</p>
             </div>
             <div class="ohr-col-6">
-              <p class="ohr-details-summary-data">cETH <span>{{ balanceOf }}</span></p>
+              <p class="ohr-details-summary-data">cETH <span>{{ balanceCETH }}</span></p>
               <p class="ohr-details-summary-info-blue">Balance of<br />underlying</p>
             </div>
           </div>
@@ -60,17 +60,20 @@
           />
           
             <div class="ohr-col-1">
-              <ohr-blue-button text="Deposit" @onClick="onClickDepositBtn()"/>
+              <ohr-blue-button text="Deposit" @onClick="onClickInvestBtn()"/>
             </div>
-            <div class="ohr-col-1">
+            <!-- <div class="ohr-col-1">
               <ohr-gray-button text="Withdraw" @onClick="onClickWithdrawBtn()"/>
             </div>
             <div class="ohr-col-1">
               <ohr-gray-button text="Redeem" @onClick="onClickRedeemBtn()"/>
-            </div>
+            </div> -->
             <div class="ohr-col-1">
-              <ohr-gray-button text="Invest" @onClick="onClickInvestBtn()"/>
+              <ohr-gray-button text="Withdraw" @onClick="onClickRedeemBtn()"/>
             </div>
+            <!-- <div class="ohr-col-1">
+              <ohr-gray-button text="Invest" @onClick="onClickInvestBtn()"/>
+            </div> -->
           </div>
         </div>
         <div class="ohr-col-4 ohr-col-lg-12 ohr-feed-container">
@@ -171,7 +174,8 @@ export default {
       amount: 0,
       newAddressParticipant: "",
       var1: "", var2: "",
-      compoundCEthContract : null
+      compoundCEthContract : null,
+      ceth_address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5'
 
     };
   },
@@ -179,15 +183,8 @@ export default {
     ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
     ...mapGetters("accounts", ["activeAccount"]),
     ...mapGetters("contracts", ["getContractData"]),
-     balanceOf() {
-      if (this.isDrizzleInitialized) {
-        var dataKey = this.drizzleInstance.contracts.compoundCEthContract.methods.balanceOf.cacheCall(
-          this.$route.query.address
-        );
-        return this.$store.getters["contracts/contractInstances"].compoundCEthContract
-          .balanceOf[dataKey].value / 1e8;
-      }
-      return -1;
+     balanceCETH() {
+       return this.getBalanceCETH()
     },
     amount_hex() {
           return this.drizzleInstance.web3.utils.toHex(this.drizzleInstance.web3.utils.toWei(
@@ -226,13 +223,6 @@ export default {
     },
     balance() {
       if (this.isDrizzleInitialized) {
-        // const data = this.getContractData({
-        //     contract: this.$route.query.address,
-        //     method: "balanceParticipant",
-        //     methodArgs: "["+ this.activeAccount +"]"
-        //   });
-
-        //   return data / 10**18;
         return this.balanceParticipant(this.activeAccount)
 
       }
@@ -249,10 +239,30 @@ export default {
       }
       return -1;
     },
+    exchangeRateCurrent() {
+      if (this.isDrizzleInitialized) {
+          return this.getContractData({
+            contract: "compoundCEthContract",
+            method: "exchangeRateCurrent",
+          });
+    }
+    return -1
+    }
   },
   methods: {
     toggleButton(v) {
       this.activeTab = v;
+    },
+    getBalanceCETH() {
+        if (this.isDrizzleInitialized) {
+        var dataKey = this.drizzleInstance.contracts.compoundCEthContract.methods.balanceOf.cacheCall(
+          this.$route.query.address
+        );
+        return this.$store.getters["contracts/contractInstances"].compoundCEthContract
+          .balanceOf[dataKey].value / 1e8;
+        
+      }
+      return -1;
     },
     onClickDepositBtn() {
       this.drizzleInstance.contracts[
@@ -278,18 +288,18 @@ export default {
     onClickInvestBtn() {
       this.drizzleInstance.contracts[
         this.$route.query.address
-      ].methods.deposit2.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+      ].methods.deposit_and_invest_compound.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
       {
         from: this.activeAccount,
         value: this.amount_hex,
       });
     },
     onClickRedeemBtn() {
-      console.log("this.drizzleInstance.web3.utils.toWei(toString(this.balance*10e18))", this.balance*1e18)
+      console.log(this.balance*1e18);
       this.drizzleInstance.contracts[
         this.$route.query.address
-      ].methods.redeemCEth.cacheSend(
-        this.balance*1e18,
+      ].methods.withdraw_and_redeem.cacheSend(
+        (this.balance*1e18).toString(),
         false,
         '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
       {
@@ -317,7 +327,6 @@ export default {
     },
   },
   created() {
-    // while (!this.isDrizzleInitialized);
     if (!(this.$route.query.address in this.drizzleInstance.contracts)) {
       var contractConfig = {
         contractName: this.$route.query.address,
@@ -336,7 +345,6 @@ export default {
       };
     this.drizzleInstance.addContract(contractConfig);
     }
-    // this.compoundCEthContract = new this.drizzleInstance.web3.eth.Contract(compoundCEthContractAbi, '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5');
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "is_owner",
@@ -375,14 +383,20 @@ export default {
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
-      method: "redeemCEth",
-      methodArgs: ["amount", "redeemType", "_cEtherContract"] // No args required for this method
+      method: "withdraw_and_redeem",
+      methodArgs: ["uint256", "bool", "address"] // No args required for this method
     });
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
-      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
       method: "exchangeRateCurrent",
       methodArgs: [] // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
+      method: "balanceOf",
+      methodArgs: "["+this.$route.query.address.toString()+"]" // No args required for this method
     });
 
   },
