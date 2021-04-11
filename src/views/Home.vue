@@ -6,13 +6,13 @@
         <div class="ohr-card-container">
           <newcard />
         </div>
-        <div class="ohr-card-container" v-if="!PoolList.length">
+        <!-- <div class="ohr-card-container" v-if="!PoolList.length">
           <card
             title="Title"
             description="Description"
             image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
           />
-        </div>
+        </div> -->
           <div
           class="ohr-card-container"
           v-for="(address, i) in PoolList"

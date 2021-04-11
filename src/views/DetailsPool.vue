@@ -239,15 +239,6 @@ export default {
       }
       return -1;
     },
-    exchangeRateCurrent() {
-      if (this.isDrizzleInitialized) {
-          return this.getContractData({
-            contract: "compoundCEthContract",
-            method: "exchangeRateCurrent",
-          });
-    }
-    return -1
-    }
   },
   methods: {
     toggleButton(v) {
@@ -385,12 +376,6 @@ export default {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "withdraw_and_redeem",
       methodArgs: ["uint256", "bool", "address"] // No args required for this method
-    });
-
-    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
-      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
-      method: "exchangeRateCurrent",
-      methodArgs: [] // No args required for this method
     });
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
