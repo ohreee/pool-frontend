@@ -4,11 +4,12 @@
       <div class="ohr-details-header-container">
         <div class="ohr-row ohr-v-center ohr-h-100">
           <div class="ohr-col-8 ohr-details-header-text">
-            <h1>Uhuru Community Project</h1>
+            <h1>{{this.$route.query.name}}</h1>
+            <div>{{this.$route.query.description}}</div>
             <div class="ohr-row ohr-no-gutter ohr-details-sub-list">
               <div class="ohr-col-1 ohr-v-center">
                 <p class="ohr-active">
-                  MEMBER
+                  {{is_public ? "PUBLIC" : "PRIVATE"}}
                 </p>
               </div>
               <div class="ohr-header-divider ohr-col-1 ohr-h-center">
@@ -199,6 +200,17 @@ export default {
       }
       return -1;
     },
+    is_public() {
+    if (this.isDrizzleInitialized) {
+          const data = this.getContractData({
+              contract: this.$route.query.address,
+              method: "is_public",
+            });
+
+            return data;
+          }
+          return -1;
+    },
     get_owner() {
     if (this.isDrizzleInitialized) {
           const data = this.getContractData({
@@ -368,6 +380,12 @@ export default {
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      method: "is_public",
+      methodArgs: [], // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "balanceParticipant",
       methodArgs: [this.activeAccount] // No args required for this method
     });
@@ -496,6 +514,9 @@ export default {
         h1
             color: #FFFFFF
             font-size: 49px
+        div
+          color: #fffff0
+          font-size: 18px
         p
             color: #ffffff
             font-size: 22px
