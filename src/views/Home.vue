@@ -23,7 +23,7 @@
             :description="getPoolInfo(address)[1]"
             :address="getPoolInfo(address)[3]"
             image="https://cdn.discordapp.com/attachments/818922919715536909/819624761196806214/img1.png"
-            @onClick="(e) => goToDetailView(e)"
+            @onClick="(e) => goToDetailView(e, getPoolInfo(address)[0], getPoolInfo(address)[1])"
           />
         </div>
         
@@ -60,8 +60,8 @@ export default {
     },
   },
   methods: {
-    goToDetailView(address) {
-      this.$router.push({path: 'details', query: { address: address }})
+    goToDetailView(address, name, description) {
+      this.$router.push({path: 'details', query: { address, name, description }})
     },
     getPoolInfo(addressPool) {
       if (this.isDrizzleInitialized) {
