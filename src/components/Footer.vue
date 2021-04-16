@@ -25,8 +25,8 @@
           <a target="_twitter" href="https://twitter.com/OhreeeOfficial">
             <img src="@/assets/icons/twitter.svg" />
           </a>
-          <a target="_instagram">
-            <img src="@/assets/icons/instagram.svg" />
+          <a target="_instagram" href="https://www.linkedin.com/showcase/ohreee">
+            <img src="@/assets/icons/linkedin.svg" />
           </a>
           <a target="_discord" href="https://discord.gg/VG36XazTpP">
             <img src="@/assets/icons/discord.svg" />
