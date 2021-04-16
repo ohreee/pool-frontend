@@ -4,28 +4,28 @@
       <h1>Features</h1>
 
       <div class="ohr-row ohr-landing-feature-row">
-        <div class="ohr-col-2">
+        <div class="ohr-col-2 ohr-col-md-6 ohr-col-sm-12 ohr-feat-card">
           <feature-card
             title="Co-operative"
             body="Users can pool funds with each other in a DAO to support a shared interest. Pooled funds will yield interest."
             img="coop.svg"
           />
         </div>
-        <div class="ohr-col-2">
+        <div class="ohr-col-2 ohr-col-md-6 ohr-col-sm-12 ohr-feat-card">
           <feature-card
             title="NFT Minter"
             body="Users can mint NFTs and control the scarcity of products sold increasing the value."
             img="nft.svg"
           />
         </div>
-        <div class="ohr-col-2">
+        <div class="ohr-col-2 ohr-col-md-6 ohr-col-sm-12 ohr-feat-card">
           <feature-card
             title="Marketplace"
             body="Users can buy fractional NFT from the marketplace. Ohreee governance token is issued."
             img="marketplace.svg"
           />
         </div>
-        <div class="ohr-col-2">
+        <div class="ohr-col-2 ohr-col-md-6 ohr-col-sm-12 ohr-feat-card">
           <feature-card
             title="P2P Trading"
             body="Trade cryptocurrency or fiat in a decentralized manner that is secure and easy to use. "
@@ -61,4 +61,14 @@ export default {
         .ohr-landing-feature-row
             margin-top: 60px
             justify-content: space-between
+
+.ohr-feat-card
+  margin-bottom: 48px
+
+
+@media only screen and (max-width: 576px)
+  .ohr-landing-feature-wrapper
+    padding: 80px 16px !important
+  h1
+    text-align: center !important
 </style>

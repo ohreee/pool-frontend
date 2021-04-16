@@ -33,4 +33,13 @@ export default {
             font-size: 40px
             color: #252E65
             margin-bottom: 60px
+
+@media only screen and (max-width: 786px)
+  .ohr-dapp-wrapper
+    padding: 80px 16px !important
+
+
+@media only screen and (max-width: 576px)
+  h1
+    text-align: center !important
 </style>

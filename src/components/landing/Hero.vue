@@ -35,6 +35,7 @@ export default {};
     min-height: 600px
 
     .ohr-landing-hero-wrapper
+      padding: 0 16px
       max-width: 1560px
       margin: 0 auto
       display: flex
@@ -78,4 +79,21 @@ export default {};
           max-width: 100% !important
           line-height: 47px
           margin-top: 10px
+
+@media only screen and (max-width: 942px)
+  .ohr-landing-hero-wrapper
+    h1
+      font-size: 60px !important
+    p
+      font-size: 32px !important
+
+@media only screen and (max-width: 476px)
+  .ohr-landing-hero
+    min-height: 1100px !important
+  .ohr-landing-hero-wrapper
+    h1
+      font-size: 48px !important
+    p
+      font-size: 32px !important
+
 </style>

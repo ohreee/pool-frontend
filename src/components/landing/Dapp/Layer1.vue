@@ -1,6 +1,8 @@
 <template>
   <div class="ohr-dapp-row">
     <div class="ohr-dapp-row-left">
+      <div class="ohr-dapp-line-left"></div>
+
       <p>Layer 1</p>
       <div class="ohr-dapp-line"></div>
     </div>
@@ -45,6 +47,7 @@ export default {};
         display: flex
         align-items: center
         justify-content: space-between
+        flex-wrap: wrap
         .ohr-dapp-box
             border: 2px solid #707070
             background-color: #FEF9EF
@@ -58,4 +61,33 @@ export default {};
                 color: #252E65
                 font-size: 24px
                 font-family: 'Yanone Kaffeesatz' !important
+
+.ohr-dapp-line-left
+  display: none
+
+@media only screen and (max-width: 786px)
+  .ohr-dapp-row
+    margin-bottom: 24px
+    flex-wrap: wrap
+    .ohr-dapp-row-left
+      max-width: 100% !important
+      flex: 100% !important
+      p
+        margin-bottom: 16px
+      .ohr-dapp-line-left
+        height: 2px
+        background-color: #C8C8C8
+        max-width: 80%
+        flex: 0.8
+        margin-right: 40px
+        display: block !important
+    .ohr-dapp-row-right
+      max-width: 100% !important
+      flex: 100% !important
+
+@media only screen and (max-width: 620px)
+  .ohr-dapp-box
+    max-width: 100% !important
+    flex: 100% !important
+    margin-bottom: 16px
 </style>

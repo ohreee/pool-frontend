@@ -27,4 +27,5 @@ export default {
 
 <style lang="sass" scoped>
 .ohr-landing
+    overflow-x: hidden
 </style>

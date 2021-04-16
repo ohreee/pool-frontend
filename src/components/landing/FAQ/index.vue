@@ -4,7 +4,7 @@
       <h1>FAQS</h1>
 
       <div class="ohr-faq-row ohr-row">
-        <div class="ohr-col-5">
+        <div class="ohr-col-5 ohr-col-md-12">
           <FAQElement
             ques="What is Ohreee?"
             ans="Ohreee is a social platform that allows businesses to come together, share information and
@@ -13,7 +13,7 @@ to recieve funds and helpful info from larger more established companies."
           />
         </div>
         <div class="ohr-col-1"></div>
-        <div class="ohr-col-5">
+        <div class="ohr-col-5 ohr-col-md-12">
           <FAQElement ques="What is a Liquidity Pool?" ans="A liquidty pool in relation to crypto allows owners of crpytocurrency such as etheruem
 to earn cumulitavly over time via depositing ether in exchange for a liquity token which
 represents interest earned over time.
@@ -22,7 +22,7 @@ represents interest earned over time.
       </div>
 
       <div class="ohr-faq-row ohr-row">
-        <div class="ohr-col-5">
+        <div class="ohr-col-5 ohr-col-md-12">
           <FAQElement ques="Our Mission" ans="Our mission is to create a place where people and businesses can come together and support
 each other while reaping the rewards of investing in communities. We want
 the future of interaction between businesses to be governend by trust worthy smart
@@ -33,7 +33,7 @@ The token’s economics must not have locking, minting or other patterns that wo
 " />
         </div>
         <div class="ohr-col-1"></div>
-        <div class="ohr-col-5">
+        <div class="ohr-col-5 ohr-col-md-12">
           <FAQElement ques="Is the Voting System Fair?" ans="Voting within cooperatives allow for assets to be fairly allocated to members within the pool
 as no business can be allocated funds with out the approval of all members. This process
 will be executed via smart contracts disabling any other options if all votes are not
@@ -42,7 +42,7 @@ in favour." />
       </div>
 
       <div class="ohr-faq-row ohr-row">
-        <div class="ohr-col-5">
+        <div class="ohr-col-5 ohr-col-md-12">
           <FAQElement
             ques="What is a Cooperative?"
             ans="Cooperatives are a step up from liquidity pools, these pools allow companies to manage 
@@ -93,4 +93,8 @@ export default {
         position: absolute
         bottom: 0
         left: 0
+
+@media only screen and (max-width: 576px)
+  h1
+    text-align: center !important
 </style>
