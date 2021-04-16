@@ -15,10 +15,10 @@
     </div>
     <div class="ohr-mobile-navbar">
       <div class="ohr-row ohr-landing-nav-row ohr-h-100">
-        <div class="ohr-col-4 ohr-v-center">
+        <div class="ohr-col-4 ohr-v-center ohr-no-gutter">
           <img class="logo" src="@/assets/logo-desktop.svg" />
         </div>
-        <div class="ohr-col-8 ohr-right ohr-v-center">
+        <div class="ohr-col-8 ohr-right ohr-v-center ohr-no-gutter">
           <button @click="handleLaunchApp" class="launch-app-btn">
             <p>Launch App</p>
             <img src="@/assets/icons/arrow-right.svg" />
