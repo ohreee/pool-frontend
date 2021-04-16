@@ -86,14 +86,20 @@ export default {};
       font-size: 60px !important
     p
       font-size: 32px !important
+      max-width: 100% !important
+
 
 @media only screen and (max-width: 476px)
   .ohr-landing-hero
-    min-height: 1100px !important
+    min-height: 800px !important
   .ohr-landing-hero-wrapper
     h1
       font-size: 48px !important
     p
       font-size: 32px !important
+      max-width: 100% !important
 
+@media only screen and (max-width: 370px)
+  .ohr-landing-hero
+    min-height: 900px !important
 </style>
