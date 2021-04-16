@@ -10,7 +10,7 @@
         Users can also secure the ownership of their digital assets and make
         sales on the Ohreee NFT marketplace.
       </p>
-      <button class="ohr-landing-hero-cta">
+      <button @click="scrollDown" class="ohr-landing-hero-cta">
         <p>Get Started</p>
         <img src="../../assets/icons/arrow-right.svg" />
       </button>
@@ -19,7 +19,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    scrollDown() {
+      window.scrollTo({
+        top: 900,
+        behavior: "smooth",
+      });
+    },
+  },
+};
 </script>
 
 <style lang="sass" scoped>

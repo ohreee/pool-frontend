@@ -12,19 +12,31 @@
         </div>
         <div class="ohr-col-6 ohr-v-center ohr-right ohr-menu-links">
           <ul>
-            <li>About</li>
-            <li>Docs</li>
+            <li><a href="mailto:team@ohreee.com">Contact Us</a></li>
+            <li><a href="#" target="_docs">Docs</a></li>
             <li>Donate <img src="@/assets/icons/heart.svg" /></li>
             <li>Language <img src="@/assets/icons/united-kingdom.svg" /></li>
           </ul>
         </div>
         <div class="ohr-col-4 ohr-row ohr-social-links ohr-right ohr-v-center">
-          <img src="@/assets/icons/medium.svg" />
-          <img src="@/assets/icons/twitter.svg" />
-          <img src="@/assets/icons/instagram.svg" />
-          <img src="@/assets/icons/discord.svg" />
-          <img src="@/assets/icons/telegram.svg" />
-          <img src="@/assets/icons/github.svg" />
+          <a target="_medium" href="https://ohreee.medium.com/">
+            <img src="@/assets/icons/medium.svg" />
+          </a>
+          <a target="_twitter" href="https://twitter.com/OhreeeOfficial">
+            <img src="@/assets/icons/twitter.svg" />
+          </a>
+          <a target="_instagram">
+            <img src="@/assets/icons/instagram.svg" />
+          </a>
+          <a target="_discord" href="https://discord.gg/VG36XazTpP">
+            <img src="@/assets/icons/discord.svg" />
+          </a>
+          <a target="_telegram" href="https://t.me/ohreeeofficial">
+            <img src="@/assets/icons/telegram.svg" />
+          </a>
+          <a target="_github" href="https://github.com/ohreee">
+            <img src="@/assets/icons/github.svg" />
+          </a>
         </div>
       </div>
     </div>
@@ -36,6 +48,8 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
+a
+  color: #252E65 !important
 .ohr-footer-desktop-logo
   display: none
 .ohr-footer-wrapper
@@ -60,17 +74,20 @@ export default {};
     li
         display: inline
         font-size: 21px
-        color: #252E65
+        color: #252E65 !important
         margin: 0 32px
         cursor: pointer
         display: flex !important
         align-items: center
         justify-content: center
+        a
+          color: #252E65 !important
         img
           margin-left: 8px
     .ohr-social-links
         img
             margin: 0 12px
+            cursor: pointer
 
 @media only screen and (max-width: 1300px)
     .ohr-footer-desktop, .ohr-footer-wrapper
