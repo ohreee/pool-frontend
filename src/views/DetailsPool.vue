@@ -142,7 +142,7 @@ import FeedItem from "../components/feed/FeedItem.vue";
 import RemoteMessage from "../components/chat/RemoteMessage.vue";
 import Message from "../components/chat/Message.vue";
 import OhrInput from "../components/common/OhrInput.vue";
-import PoolFactory from "../../../build/contracts/PoolFactory.json";
+// import PoolFactory from "../../../build/contracts/PoolFactory.json";
 import { mapGetters } from "vuex";
 
 export default {

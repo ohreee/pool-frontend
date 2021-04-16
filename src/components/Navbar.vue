@@ -171,6 +171,7 @@ export default {
     top: 0
     background-color: #ffffff
     width: 100%
+    z-index: 100
 
 .ohr-desktop-drawer
   position: fixed
