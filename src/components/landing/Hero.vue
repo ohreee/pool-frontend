@@ -25,7 +25,7 @@ export default {};
 <style lang="sass" scoped>
 .ohr-landing-hero
     width: 100%
-    height: 88vh
+    height: 100vh
     background-image: radial-gradient(#f7af8d, #ff7c5b, #ff552a)
     margin-top: 80px
     display: flex
