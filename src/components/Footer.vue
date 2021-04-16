@@ -13,7 +13,7 @@
         <div class="ohr-col-6 ohr-v-center ohr-right ohr-menu-links">
           <ul>
             <li><a href="mailto:team@ohreee.com">Contact Us</a></li>
-            <li><a href="#" target="_docs">Docs</a></li>
+            <li><a href="https://www.notion.so/ohreee/Ohreee-FAQ-cf78704e3235470bbfe1636fa34dfc17" target="_docs">Docs</a></li>
             <li>Donate <img src="@/assets/icons/heart.svg" /></li>
             <li>Language <img src="@/assets/icons/united-kingdom.svg" /></li>
           </ul>
