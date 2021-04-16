@@ -4,8 +4,8 @@
       <h1>DApp Structure</h1>
       <div>
         <layer-3 />
-        <layer-2/>
-        <layer-1/>
+        <layer-2 />
+        <layer-1 />
         <layer-0 />
       </div>
     </div>
@@ -14,8 +14,8 @@
 
 <script>
 import Layer0 from "./Layer0.vue";
-import Layer1 from './Layer1.vue';
-import Layer2 from './Layer2.vue';
+import Layer1 from "./Layer1.vue";
+import Layer2 from "./Layer2.vue";
 import Layer3 from "./Layer3.vue";
 export default {
   components: { Layer0, Layer3, Layer2, Layer1 },
