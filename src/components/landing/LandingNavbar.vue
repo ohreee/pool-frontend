@@ -6,7 +6,7 @@
           <img class="logo" src="@/assets/logo-desktop.svg" />
         </div>
         <div class="ohr-col-8 ohr-right ohr-v-center">
-          <button class="launch-app-btn">
+          <button @click="handleLaunchApp" class="launch-app-btn">
             <p>Launch App</p>
             <img src="@/assets/icons/arrow-right.svg" />
           </button>
@@ -19,7 +19,7 @@
           <img class="logo" src="@/assets/logo-desktop.svg" />
         </div>
         <div class="ohr-col-8 ohr-right ohr-v-center">
-          <button class="launch-app-btn">
+          <button @click="handleLaunchApp" class="launch-app-btn">
             <p>Launch App</p>
             <img src="@/assets/icons/arrow-right.svg" />
           </button>
@@ -30,7 +30,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        handleLaunchApp(){
+            this.$router.push('/home');
+        }
+    }
+};
 </script>
 
 <style lang="sass" scoped>
