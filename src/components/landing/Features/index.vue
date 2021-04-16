@@ -48,7 +48,20 @@ export default {
 .ohr-landing-feature
     z-index: 20
     min-height: 600px
+    animation: gradient 15s ease infinite
+    background-size: 400% 400%
     background-image: radial-gradient(circle at 40px 40px, #d4fff1 20%, #9ee6e6 80%)
+
+    @keyframes gradient
+      0%
+        background-position: 0% 50%
+
+      50%
+        background-position: 100% 50%
+
+      100%
+        background-position: 0% 50%
+
 
     .ohr-landing-feature-wrapper
         max-width: 1560px

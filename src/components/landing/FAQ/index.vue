@@ -71,8 +71,20 @@ export default {
 <style lang="sass" scoped>
 .ohr-faq
     min-height: 600px
+    animation: gradient 15s ease infinite
+    background-size: 400% 400%
     background-image: radial-gradient(circle at 40px 40px, #d4fff1 20%, #9ee6e6 80%)
     position: relative
+
+    @keyframes gradient
+      0%
+        background-position: 0% 50%
+
+      50%
+        background-position: 100% 50%
+
+      100%
+        background-position: 0% 50%
     .ohr-faq-wrapper
         max-width: 1560px
         margin: 0 auto
@@ -88,11 +100,23 @@ export default {
 
     .ohr-faq-footer
         height: 80px
-        background-color: #FFC043
+        background-image: linear-gradient(45deg, #ffc043, #ff552a)
+        animation: gradient 15s ease infinite
+        background-size: 400% 400%
         width: 100%
         position: absolute
         bottom: 0
         left: 0
+
+        @keyframes gradient
+          0%
+            background-position: 0% 50%
+
+          50%
+            background-position: 100% 50%
+
+          100%
+            background-position: 0% 50%
 
 @media only screen and (max-width: 576px)
   h1
