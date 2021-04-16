@@ -27,7 +27,7 @@ export default {};
     width: 100%
     height: 88vh
     background-image: radial-gradient(#f7af8d, #ff7c5b, #ff552a)
-    margin-top: 120px
+    margin-top: 80px
     display: flex
     flex-direction: column
     justify-content: center

@@ -278,7 +278,7 @@ export default {
     transition: .4s
 
 .ohr-mobile-navbar
-    height: 125px
+    height: 80px
     width: 100%
     max-width: 1560px
     margin: auto
