@@ -101,5 +101,5 @@ export default {};
 
 @media only screen and (max-width: 370px)
   .ohr-landing-hero
-    min-height: 900px !important
+    min-height: 1000px !important
 </style>
