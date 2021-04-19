@@ -41,6 +41,7 @@
 import { mapGetters } from "vuex";
 import Card from "../components/home/card-pool.vue";
 import Newcard from "../components/home/newcard.vue";
+const PoolRecorder = require("../contracts/PoolRecorder.json")
 
 export default {
   components: {
@@ -79,11 +80,21 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
-      contractName: "PoolRecorder", // i.e. TwistedAuctionMock
-      method: "getListPools",
-      methodArgs: [], // No args required for this method
-    });
+    if (!("PoolRecorder" in this.drizzleInstance.contracts)) {
+      var contractConfig = {
+        contractName: "PoolRecorder",
+        web3Contract: new this.drizzleInstance.web3.eth.Contract(
+          PoolRecorder.abi,
+          "0xB57438F28d45Fd9c5A22D29228867Cfb6f99A0be"
+        ),
+      };
+      this.drizzleInstance.addContract(contractConfig);
+      this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+        contractName: "PoolRecorder", // i.e. TwistedAuctionMock
+        method: "getListPools",
+        methodArgs: [], // No args required for this method
+      });
+    }
   },
 };
 </script>
