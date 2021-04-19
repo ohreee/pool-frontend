@@ -1,5 +1,5 @@
 <template>
-  <div class="ohr-wrapper">
+  <div v-if="isDrizzleInitialized" class="ohr-wrapper">
     <div class="ohr-create-co-container">
       <h1>Create a Cooperative</h1>
       <div class="ohr-row">
@@ -24,6 +24,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div v-else>
+    Loading... Drizzle not initialized, try to connect metamask
   </div>
 </template>
 
