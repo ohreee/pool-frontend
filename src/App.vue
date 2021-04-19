@@ -1,24 +1,17 @@
 <template>
-<div v-if="isDrizzleInitialized">
+<div>
   <Navbar />
   <router-view />
   <Footer/>
-</div>
-<div v-else>
-  Loading...
 </div>
 </template>
 
 <script>
 import Footer from './components/Footer.vue';
 import Navbar from "./components/Navbar.vue";
-import { mapGetters } from "vuex";
 
 export default {
   components: { Navbar, Footer },
-  computed: {
-    ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
-  },
   name: "app",
 };
 </script>

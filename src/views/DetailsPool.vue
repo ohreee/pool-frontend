@@ -1,5 +1,5 @@
 <template>
-  <div class="ohr-wrapper">
+  <div v-if="isDrizzleInitialized" class="ohr-wrapper">
     <div class="ohr-details-header">
       <div class="ohr-details-header-container">
         <div class="ohr-row ohr-v-center ohr-h-100">
@@ -146,6 +146,9 @@
       </div>
     </div>
   </div>
+  </div>
+    <div v-else>
+    Loading... Drizzle not initialized, try to connect metamask
   </div>
 </template>
 
