@@ -4,11 +4,12 @@
       <div class="ohr-details-header-container">
         <div class="ohr-row ohr-v-center ohr-h-100">
           <div class="ohr-col-8 ohr-details-header-text">
-            <h1>Uhuru Community Project</h1>
+            <h1>{{this.$route.query.name}}</h1>
+            <div>{{this.$route.query.description}}</div>
             <div class="ohr-row ohr-no-gutter ohr-details-sub-list">
               <div class="ohr-col-1 ohr-v-center">
                 <p class="ohr-active">
-                  MEMBER
+                  {{is_public ? "PUBLIC" : "PRIVATE"}}
                 </p>
               </div>
               <div class="ohr-header-divider ohr-col-1 ohr-h-center">
@@ -47,6 +48,10 @@
               <p class="ohr-details-summary-data"><span>{{ getParticipantList.length}}</span></p>
               <p class="ohr-details-summary-info-blue">MEMBERS<br />POOLED</p>
             </div>
+            <div class="ohr-col-6">
+              <p class="ohr-details-summary-data">cETH <span>{{ balanceCETH }}</span></p>
+              <p class="ohr-details-summary-info-blue">Balance of<br />underlying</p>
+            </div>
           </div>
           <div class="ohr-row">
           <ohr-input
@@ -54,13 +59,22 @@
             @onChange="(e) => (amount = e)"
             label="Amount"
           />
-            <div class="ohr-col-4">
-              <ohr-blue-button text="Deposit" @onClick="onClickDepositBtn()"/>
+          
+            <div class="ohr-col-1">
+              <ohr-blue-button text="Deposit" @onClick="onClickInvestBtn()"/>
             </div>
-            <div class="ohr-col-1"></div>
-            <div class="ohr-col-4">
+            <!-- <div class="ohr-col-1">
               <ohr-gray-button text="Withdraw" @onClick="onClickWithdrawBtn()"/>
             </div>
+            <div class="ohr-col-1">
+              <ohr-gray-button text="Redeem" @onClick="onClickRedeemBtn()"/>
+            </div> -->
+            <div class="ohr-col-1">
+              <ohr-gray-button text="Withdraw" @onClick="onClickRedeemBtn()"/>
+            </div>
+            <!-- <div class="ohr-col-1">
+              <ohr-gray-button text="Invest" @onClick="onClickInvestBtn()"/>
+            </div> -->
           </div>
         </div>
         <div class="ohr-col-4 ohr-col-lg-12 ohr-feed-container">
@@ -142,7 +156,8 @@ import FeedItem from "../components/feed/FeedItem.vue";
 import RemoteMessage from "../components/chat/RemoteMessage.vue";
 import Message from "../components/chat/Message.vue";
 import OhrInput from "../components/common/OhrInput.vue";
-// import PoolFactory from "../../../build/contracts/PoolFactory.json";
+import PoolFactory from "../contracts/PoolFactory.json";
+import compoundCEthContractAbi from "../contracts/ceth_abi.json"
 import { mapGetters } from "vuex";
 
 export default {
@@ -158,19 +173,43 @@ export default {
     return {
       activeTab: 0,
       amount: 0,
-      newAddressParticipant: ""
+      newAddressParticipant: "",
+      var1: "", var2: "",
+      compoundCEthContract : null,
+      ceth_address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5'
+
     };
   },
   computed: {
     ...mapGetters("drizzle", ["isDrizzleInitialized", "drizzleInstance"]),
     ...mapGetters("accounts", ["activeAccount"]),
     ...mapGetters("contracts", ["getContractData"]),
-  
+     balanceCETH() {
+       return this.getBalanceCETH()
+    },
+    amount_hex() {
+          return this.drizzleInstance.web3.utils.toHex(this.drizzleInstance.web3.utils.toWei(
+          this.amount,
+          "ether"
+        ))
+    },
+
     is_owner() {
     if (this.isDrizzleInitialized) {
         return this.get_owner == this.activeAccount;
       }
       return -1;
+    },
+    is_public() {
+    if (this.isDrizzleInitialized) {
+          const data = this.getContractData({
+              contract: this.$route.query.address,
+              method: "is_public",
+            });
+
+            return data;
+          }
+          return -1;
     },
     get_owner() {
     if (this.isDrizzleInitialized) {
@@ -196,13 +235,6 @@ export default {
     },
     balance() {
       if (this.isDrizzleInitialized) {
-        // const data = this.getContractData({
-        //     contract: this.$route.query.address,
-        //     method: "balanceParticipant",
-        //     methodArgs: "["+ this.activeAccount +"]"
-        //   });
-
-        //   return data / 10**18;
         return this.balanceParticipant(this.activeAccount)
 
       }
@@ -224,6 +256,17 @@ export default {
     toggleButton(v) {
       this.activeTab = v;
     },
+    getBalanceCETH() {
+        if (this.isDrizzleInitialized) {
+        var dataKey = this.drizzleInstance.contracts.compoundCEthContract.methods.balanceOf.cacheCall(
+          this.$route.query.address
+        );
+        return this.$store.getters["contracts/contractInstances"].compoundCEthContract
+          .balanceOf[dataKey].value / 1e8;
+        
+      }
+      return -1;
+    },
     onClickDepositBtn() {
       this.drizzleInstance.contracts[
         this.$route.query.address
@@ -243,6 +286,27 @@ export default {
           "ether"
         ) ,{
         from: this.activeAccount
+      });
+    },
+    onClickInvestBtn() {
+      this.drizzleInstance.contracts[
+        this.$route.query.address
+      ].methods.deposit_and_invest_compound.cacheSend(this.ceth_address,
+      {
+        from: this.activeAccount,
+        value: this.amount_hex,
+      });
+    },
+    onClickRedeemBtn() {
+      console.log(this.balance*1e18);
+      this.drizzleInstance.contracts[
+        this.$route.query.address
+      ].methods.withdraw_and_redeem.cacheSend(
+        (this.balance*1e18).toString(),
+        false,
+        this.ceth_address,
+      {
+        from: this.activeAccount,
       });
     },
     onClickAddBtn() {
@@ -266,13 +330,20 @@ export default {
     },
   },
   created() {
-    // while (!this.isDrizzleInitialized);
     if (!(this.$route.query.address in this.drizzleInstance.contracts)) {
       var contractConfig = {
         contractName: this.$route.query.address,
         web3Contract: new this.drizzleInstance.web3.eth.Contract(
           PoolFactory.abi,
           this.$route.query.address
+        ),
+      };
+      this.drizzleInstance.addContract(contractConfig);
+      var contractConfig = {
+        contractName: "compoundCEthContract",
+        web3Contract: new this.drizzleInstance.web3.eth.Contract(
+          compoundCEthContractAbi,
+          this.ceth_address
         ),
       };
     this.drizzleInstance.addContract(contractConfig);
@@ -309,11 +380,28 @@ export default {
 
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
       contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      method: "is_public",
+      methodArgs: [], // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
       method: "balanceParticipant",
       methodArgs: [this.activeAccount] // No args required for this method
     });
 
-    
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: this.$route.query.address, // i.e. TwistedAuctionMock
+      method: "withdraw_and_redeem",
+      methodArgs: ["uint256", "bool", "address"] // No args required for this method
+    });
+
+    this.$store.dispatch("drizzle/REGISTER_CONTRACT", {
+      contractName: "compoundCEthContract", // i.e. TwistedAuctionMock
+      method: "balanceOf",
+      methodArgs: "["+this.$route.query.address.toString()+"]" // No args required for this method
+    });
+
   },
 };
 </script>
@@ -426,6 +514,9 @@ export default {
         h1
             color: #FFFFFF
             font-size: 49px
+        div
+          color: #fffff0
+          font-size: 18px
         p
             color: #ffffff
             font-size: 22px
