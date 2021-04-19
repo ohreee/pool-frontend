@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58.5" height="52.251" viewBox="0 0 58.5 52.251">
+  <g id="geometry" transform="translate(0 -27.344)">
+    <g id="Group_119" data-name="Group 119" transform="translate(15.978 27.344)">
+      <g id="Group_116" data-name="Group 116">
+        <g id="Group_115" data-name="Group 115">
+          <path id="Path_109" data-name="Path 109" d="M166.688,75.716v27.658c0,3.052-6.01,9.626-13.423,9.626s-13.423-6.573-13.423-9.626V75.716Z" transform="translate(-139.842 -70.189)" fill="#fc7bd6"/>
+          <path id="Path_110" data-name="Path 110" d="M242.049,75.716v27.658c0,2.636-4.483,7.9-10.48,9.284a13.053,13.053,0,0,0,2.943.342c7.413,0,13.423-6.573,13.423-9.626V75.716Z" transform="translate(-221.088 -70.189)" fill="#fc65cf"/>
+          <ellipse id="Ellipse_215" data-name="Ellipse 215" cx="13.423" cy="5.527" rx="13.423" ry="5.527" fill="#fcb1e6"/>
+        </g>
+      </g>
+      <g id="Group_118" data-name="Group 118" transform="translate(10.88 17.317)">
+        <g id="Group_117" data-name="Group 117">
+          <path id="Path_111" data-name="Path 111" d="M250.888,178.9l-15.821,6.517,15.821,6.517,15.821-6.517Z" transform="translate(-235.067 -178.903)" fill="#7affd5"/>
+        </g>
+        <path id="Path_112" data-name="Path 112" d="M373.534,242.437v19.931l15.821-6.517V235.941Z" transform="translate(-357.713 -229.424)" fill="#1ee3a5"/>
+        <path id="Path_113" data-name="Path 113" d="M460.491,238.358v19.918l5.885-2.424V235.941Z" transform="translate(-434.735 -229.424)" fill="#1cd198"/>
+        <path id="Path_114" data-name="Path 114" d="M235.067,235.941l15.821,6.5v19.931l-15.821-6.517Z" transform="translate(-235.067 -229.424)" fill="#15aa78"/>
+      </g>
+    </g>
+    <g id="Group_121" data-name="Group 121" transform="translate(0 54.246)">
+      <path id="Path_115" data-name="Path 115" d="M15.978,288.14V262.79L0,281.727Z" transform="translate(0 -262.79)" fill="#fcf2b4"/>
+      <path id="Path_116" data-name="Path 116" d="M139.842,288.14V262.79l15.978,18.937Z" transform="translate(-123.864 -262.79)" fill="#fce767"/>
+      <g id="Group_120" data-name="Group 120" transform="translate(15.978)">
+        <path id="Path_117" data-name="Path 117" d="M152.3,283.139l3.517-1.412L139.842,262.79Z" transform="translate(-139.842 -262.79)" fill="#fcdf2b"/>
+      </g>
+    </g>
+  </g>
+</svg>

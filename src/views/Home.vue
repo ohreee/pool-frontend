@@ -14,6 +14,7 @@
           />
         </div> -->
           <div
+          v-if="PoolList.length > 0"
           class="ohr-card-container"
           v-for="(address, i) in PoolList"
           :key="i"

@@ -6,9 +6,14 @@ import EditCooperative from '../views/EditCooperative.vue';
 import Profile from '../views/Profile.vue';
 import Home from '../views/Home.vue';
 import Details from '../views/DetailsPool.vue'
+import Landing from '../views/Landing.vue'
 
 
 const routes = [{
+        path: '/',
+        component: Landing
+    },
+    {
         path: '/home',
         component: Home
     },
@@ -35,6 +40,6 @@ const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes: routes,
-  });
+});
 
 export default router;

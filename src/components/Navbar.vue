@@ -171,6 +171,7 @@ export default {
     top: 0
     background-color: #ffffff
     width: 100%
+    z-index: 100
 
 .ohr-desktop-drawer
   position: fixed
@@ -277,7 +278,7 @@ export default {
     transition: .4s
 
 .ohr-mobile-navbar
-    height: 125px
+    height: 80px
     width: 100%
     max-width: 1560px
     margin: auto

@@ -156,7 +156,7 @@ import FeedItem from "../components/feed/FeedItem.vue";
 import RemoteMessage from "../components/chat/RemoteMessage.vue";
 import Message from "../components/chat/Message.vue";
 import OhrInput from "../components/common/OhrInput.vue";
-import PoolFactory from "../../../build/contracts/PoolFactory.json";
+import PoolFactory from "../contracts/PoolFactory.json";
 import compoundCEthContractAbi from "../contracts/ceth_abi.json"
 import { mapGetters } from "vuex";
 
@@ -291,7 +291,7 @@ export default {
     onClickInvestBtn() {
       this.drizzleInstance.contracts[
         this.$route.query.address
-      ].methods.deposit_and_invest_compound.cacheSend('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+      ].methods.deposit_and_invest_compound.cacheSend(this.ceth_address,
       {
         from: this.activeAccount,
         value: this.amount_hex,
@@ -304,7 +304,7 @@ export default {
       ].methods.withdraw_and_redeem.cacheSend(
         (this.balance*1e18).toString(),
         false,
-        '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+        this.ceth_address,
       {
         from: this.activeAccount,
       });
@@ -343,7 +343,7 @@ export default {
         contractName: "compoundCEthContract",
         web3Contract: new this.drizzleInstance.web3.eth.Contract(
           compoundCEthContractAbi,
-          "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5"
+          this.ceth_address
         ),
       };
     this.drizzleInstance.addContract(contractConfig);
