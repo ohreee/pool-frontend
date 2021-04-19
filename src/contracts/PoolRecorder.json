@@ -11098,10 +11098,30 @@
       "links": {},
       "address": "0x59b4baBe32C46f7e628a6e80E97BD09Ff5Ab40B4",
       "transactionHash": "0x2b4a134821907b4ae49f7a12c1fcac8708cd71ccb1c6b45a348943bb5a3051c1"
+    },
+    "3": {
+      "events": {
+        "0x73cca62ab1b520c9715bf4e6c71e3e518c754e7148f65102f43289a7df0efea6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "poolAddress",
+              "type": "address"
+            }
+          ],
+          "name": "PoolAdded",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xB57438F28d45Fd9c5A22D29228867Cfb6f99A0be",
+      "transactionHash": "0x1b174484ff00801b6c29bb36181b9b216cce317f55af309d4a8392319a437c7b"
     }
   },
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-04-19T00:26:32.533Z",
+  "updatedAt": "2021-04-19T15:04:37.605Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
