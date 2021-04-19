@@ -179,7 +179,7 @@ export default {
       newAddressParticipant: "",
       var1: "", var2: "",
       compoundCEthContract : null,
-      ceth_address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5'
+      ceth_address: '0xd6801a1dffcd0a410336ef88def4320d6df1883e'
 
     };
   },

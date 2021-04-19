@@ -9,13 +9,13 @@ const options = {
       url: 'ws://127.0.0.1:8545'
     }
   },
-  contracts: [PoolRecorder],
+  contracts: [],
   events: {
   },
   polls: {
     //check the blockchain every 5s
-    accounts: 1000,
-    blocks: 1000
+    accounts: 5000,
+    blocks: 5000
   }
 }
 
