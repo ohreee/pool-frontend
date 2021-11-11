@@ -21,7 +21,7 @@ const store = new Vuex.Store({
   }
 })
 
-Vue.use(drizzleVuePlugin, { store, drizzleOptions });
+// Vue.use(drizzleVuePlugin, { store, drizzleOptions });
 
 new Vue({
   store,
